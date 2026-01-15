@@ -60,7 +60,7 @@ AgroFuturoONG/
 
 ### 1. Clonar el Repositorio
 
-Acceda a la carpeta `htdocs` de su instalación de XAMPP, abra una terminal y ejecute:
+Accede a la carpeta `htdocs` de XAMPP, abre una terminal y ejecuta:
 
 ```bash
 git clone https://github.com/7albertooo/AgroFuturoONG.git
