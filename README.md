@@ -32,7 +32,7 @@ Incluye un **panel de administración**, perfiles de usuario y herramientas de s
 - **Backend**: PHP 8.x
 - **Base de Datos**: MySQL
 - **Frontend**: HTML5
-- **Estilos**: Tailwind CSS v4 (Engine de alto rendimiento)
+- **Estilos**: Bootstrap 5.3 (vía CDN)
 - **Servidor Local**: XAMPP (Apache)
 
 ---
@@ -47,27 +47,18 @@ AgroFuturoONG/
 │   ├── funciones/          # Funciones auxiliares y utilidades
 │   └── vistas/             # Vistas (HTML/PHP) y layouts
 ├── public/                 # Archivos accesibles públicamente
-│   ├── style/              # CSS generado (style.css)
 │   ├── assets/             # Imágenes y recursos estáticos
 │   └── index.php           # Punto de entrada de la aplicación
-├── src/                    # Archivos fuente del frontend
-│   └── input.css           # Configuración de Tailwind CSS v4
-├── package.json            # Dependencias y scripts de Node.js
 └── README.md               # Documentación
+└── .gitignore              # Archivo de configuración de Git
+└── .env                    # Archivo de configuración de entorno
 ```
 
 ---
 
 ## ⚙️ Instalación y Configuración
 
-Siga estos pasos para configurar el proyecto en su entorno local:
-
-### 1. Requisitos Previos
-
-- Instalar [XAMPP](https://www.apachefriends.org/index.html) con PHP 8.x.
-- Instalar [Node.js](https://nodejs.org/) (versión 20 o superior recomendada para Tailwind v4).
-
-### 2. Clonar el Repositorio
+### 1. Clonar el Repositorio
 
 Acceda a la carpeta `htdocs` de su instalación de XAMPP, abra una terminal y ejecute:
 
@@ -76,15 +67,7 @@ git clone https://github.com/7albertooo/AgroFuturoONG.git
 cd AgroFuturoONG
 ```
 
-### 3. Instalación de Dependencias
-
-Este proyecto utiliza **Tailwind CSS v4** mediante npm. Para que el CSS funcione, es necesario instalar las herramientas de desarrollo:
-
-```bash
-npm install
-```
-
-### 4. Configurar la Base de Datos
+### 2. Configurar la Base de Datos
 
 1. Abre **phpMyAdmin** (`http://localhost/phpmyadmin`).
 2. Crea una nueva base de datos llamada `agrofuturo`.
@@ -92,33 +75,8 @@ npm install
 
 ---
 
-## 🎨 Configuración de Tailwind CSS v4
+## 🎨 Estilos con Bootstrap 5
 
-En esta versión (v4), la configuración se maneja directamente desde el archivo CSS sin necesidad de un `tailwind.config.js` por defecto.
+El proyecto utiliza **Bootstrap 5** a través de su CDN
 
-1.  **Archivo Fuente**: El código base está en `src/input.css`, donde se importa Tailwind:
-    ```css
-    @import "tailwindcss";
-    ```
-2.  **Generación de Estilos**: Al ejecutar el compilador, se genera el archivo `public/style/style.css`, que es el que se enlaza en el proyecto:
-    ```html
-    <link rel="stylesheet" href="./style/style.css" />
-    ```
-
-### Comandos de Compilación
-
-Para que las clases de Tailwind que escribas en tus archivos `.php` o `.html` se traduzcan en estilos reales, usa estos comandos:
-
-- **Compilar para Producción**: Genera el CSS optimizado y minificado.
-  ```bash
-  npm run build
-  ```
-- **Modo Desarrollo (Recomendado)**: Escucha cambios en tiempo real y actualiza el CSS automáticamente.
-  ```bash
-  npm run dev
-  ```
-
-> [!TIP]
-> Mantén la terminal con `npm run dev` abierta mientras trabajas para que los estilos se actualicen al instante al guardar tus archivos.
-
----
+Los estilos se cargan automáticamente en el `header.php` de la aplicación:
