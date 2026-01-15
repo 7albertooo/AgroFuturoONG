@@ -1,0 +1,10 @@
+# Dependencias
+node_modules/
+
+# Archivos generados
+public/style/style.css
+
+# Sistema
+.DS_Store
+Thumbs.db
+.env
