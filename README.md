@@ -64,7 +64,6 @@ Accede a la carpeta `htdocs` de XAMPP, abre una terminal y ejecuta:
 
 ```bash
 git clone https://github.com/7albertooo/AgroFuturoONG.git
-cd AgroFuturoONG
 ```
 
 ### 2. Configurar la Base de Datos
