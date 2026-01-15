@@ -1,4 +1,4 @@
-# ONG Desarrollo: Agricultura y Microcréditos
+# AgroFuturoONG
 
 ## 📝 Descripción del Proyecto
 
