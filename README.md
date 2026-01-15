@@ -41,15 +41,19 @@ Incluye un **panel de administración**, perfiles de usuario y herramientas de s
 
 ```text
 AgroFuturoONG/
-├── app/                # Lógica de la aplicación (PHP)
-├── public/             # Archivos accesibles públicamente
-│   ├── style/          # CSS generado (style.css)
-│   └── assets/         # Imágenes y recursos estáticos
-├── src/                # Archivos fuente del frontend
-│   └── input.css       # Configuración de Tailwind CSS v4
-├── index.php           # Punto de entrada de la aplicación
-├── package.json        # Dependencias y scripts de Node.js
-└── README.md           # Documentación
+├── app/                    # Lógica de la aplicación (PHP)
+│   ├── conexion/           # Gestión de base de datos
+│   ├── controladores/      # Controladores de la aplicación
+│   ├── funciones/          # Funciones auxiliares y utilidades
+│   └── vistas/             # Vistas (HTML/PHP) y layouts
+├── public/                 # Archivos accesibles públicamente
+│   ├── style/              # CSS generado (style.css)
+│   ├── assets/             # Imágenes y recursos estáticos
+│   └── index.php           # Punto de entrada de la aplicación
+├── src/                    # Archivos fuente del frontend
+│   └── input.css           # Configuración de Tailwind CSS v4
+├── package.json            # Dependencias y scripts de Node.js
+└── README.md               # Documentación
 ```
 
 ---
@@ -98,7 +102,7 @@ En esta versión (v4), la configuración se maneja directamente desde el archivo
     ```
 2.  **Generación de Estilos**: Al ejecutar el compilador, se genera el archivo `public/style/style.css`, que es el que se enlaza en el proyecto:
     ```html
-    <link rel="stylesheet" href="./public/style/style.css" />
+    <link rel="stylesheet" href="./style/style.css" />
     ```
 
 ### Comandos de Compilación
