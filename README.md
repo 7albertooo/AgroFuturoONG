@@ -73,10 +73,4 @@ cd AgroFuturoONG
 2. Crea una nueva base de datos llamada `agrofuturo`.
 3. Importa el archivo SQL (si está disponible) o configura las tablas necesarias.
 
----
 
-## 🎨 Estilos con Bootstrap 5
-
-El proyecto utiliza **Bootstrap 5** a través de su CDN
-
-Los estilos se cargan automáticamente en el `header.php` de la aplicación:
