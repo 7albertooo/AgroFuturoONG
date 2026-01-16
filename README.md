@@ -98,7 +98,7 @@ Para subir en github ejecuta:
 ```bash
 git add .
 git commit -m "Mensaje"
-git push
+git push -u origin tu-rama
 ```
 
 Cada vez que entres en el proyecto en VSCODE ejecuta:
@@ -128,20 +128,20 @@ git pull
 ## 2️⃣ Crear rama nueva
 
 ```bash
-git checkout -b feature-comentarios
+git checkout -b tu-rama
 ```
 
 ## 3️⃣ Programar y guardar
 
 ```bash
 git add .
-git commit -m "Sistema de comentarios"
-git push -u origin feature-comentarios
+git commit -m "comentario"
+git push -u origin tu-rama
 ```
 
 ## 4️⃣ Pull Request en GitHub
 
-👉 Unir `feature-comentarios` → `main`
+👉 Unir `tu-rama` → `main`
 
 ---
 
