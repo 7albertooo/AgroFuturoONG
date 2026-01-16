@@ -32,7 +32,7 @@ Incluye un **panel de administración**, perfiles de usuario y herramientas de s
 - **Backend**: PHP 8.x
 - **Base de Datos**: MySQL
 - **Frontend**: HTML5
-- **Estilos**: Bootstrap 5.3 (vía CDN)
+- **Estilos**: Tailwind CSS (via npm)
 - **Servidor Local**: XAMPP (Apache)
 
 ---
@@ -48,7 +48,13 @@ AgroFuturoONG/
 │   └── vistas/             # Vistas (HTML/PHP) y layouts
 ├── public/                 # Archivos accesibles públicamente
 │   ├── assets/             # Imágenes y recursos estáticos
+│   ├── style/              # Archivos CSS (Tailwind)
+│   │   ├── style.css       # Input de Tailwind
+│   │   └── output.css      # CSS generado por Tailwind
 │   └── index.php           # Punto de entrada de la aplicación
+├── node_modules/           # Dependencias de npm
+├── package.json            # Configuración de npm
+├── tailwind.config.js      # Configuración de Tailwind CSS
 └── README.md               # Documentación
 └── .gitignore              # Archivo de configuración de Git
 └── .env                    # Archivo de configuración de entorno
@@ -66,10 +72,44 @@ Accede a la carpeta `htdocs` de XAMPP, abre una terminal y ejecuta:
 git clone https://github.com/7albertooo/AgroFuturoONG.git
 ```
 
-### 2. Configurar la Base de Datos
+### 2. Instalar Dependencias y Generar CSS
+
+Para que los estilos de Tailwind funcionen, debes instalar las dependencias de Node.js y compilar el archivo CSS:
+
+```bash
+npm install
+npm run build
+```
+
+Si deseas que Tailwind compile los cambios automáticamente mientras desarrollas:
+
+```bash
+npm run watch
+```
+
+Cada vez que hagas un cambio de css con tailwind antes de subir a github ejecuta:
+
+```bash
+npm run build
+```
+
+Para subir en github ejecuta:
+
+```bash
+git add .
+git commit -m "Mensaje"
+git push
+```
+
+Cada vez que entres en el proyecto en VSCODE ejecuta:
+
+```bash
+git pull
+npm run watch
+```
+
+### 3. Configurar la Base de Datos
 
 1. Abre **phpMyAdmin** (`http://localhost/phpmyadmin`).
 2. Crea una nueva base de datos llamada `agrofuturo`.
 3. Importa el archivo SQL (si está disponible) o configura las tablas necesarias.
-
-
