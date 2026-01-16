@@ -57,8 +57,7 @@ AgroFuturoONG/
 │   │   │   └── tailwind.css      # Importación de Tailwind
 │   │   └── img.png               # Recursos de imágenes
 │   └── vistas/                   # Vistas públicas
-│       ├── includes/             # Archivos incluidos (header, footer)
-│       │   └── header.php        # Encabezado de la aplicación
+│       │── header.php        # Encabezado de la aplicación
 │       └── index.php             # Punto de entrada de la aplicación
 ├── node_modules/                 # Dependencias de npm
 ├── .env                          # Archivo de configuración de entorno
