@@ -1,7 +1,4 @@
-<?php
-//Incluimos el archivo de constantes
-include_once '../../app/config/constantes.php';
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +7,7 @@ include_once '../../app/config/constantes.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $APP_NAME; ?></title>
     <!-- Tailwind CSS (output file generated from style.css) -->
-    <link rel="stylesheet" href="../../style/output.css">
-    <link rel="stylesheet" href="../../style/style.css">
+    <link href="../assets/style/styles.css" rel="stylesheet">
 </head>
 
 <body class="bg-gray-50">
@@ -30,7 +26,7 @@ include_once '../../app/config/constantes.php';
                 </button>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex flex-grow items-center justify-center">
+                <div class="hidden md:flex flex-row items-center justify-center">
                     <ul class="flex space-x-8">
                         <li>
                             <a class="text-gray-800 font-medium hover:text-green-600 transition-colors" href="#">Home</a>

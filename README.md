@@ -41,23 +41,31 @@ Incluye un **panel de administración**, perfiles de usuario y herramientas de s
 
 ```text
 AgroFuturoONG/
-├── app/                    # Lógica de la aplicación (PHP)
-│   ├── conexion/           # Gestión de base de datos
-│   ├── controladores/      # Controladores de la aplicación
-│   ├── funciones/          # Funciones auxiliares y utilidades
-│   └── vistas/             # Vistas (HTML/PHP) y layouts
-├── public/                 # Archivos accesibles públicamente
-│   ├── assets/             # Imágenes y recursos estáticos
-│   ├── style/              # Archivos CSS (Tailwind)
-│   │   ├── style.css       # Input de Tailwind
-│   │   └── output.css      # CSS generado por Tailwind
-│   └── index.php           # Punto de entrada de la aplicación
-├── node_modules/           # Dependencias de npm
-├── package.json            # Configuración de npm
-├── tailwind.config.js      # Configuración de Tailwind CSS
-└── README.md               # Documentación
-└── .gitignore              # Archivo de configuración de Git
-└── .env                    # Archivo de configuración de entorno
+├── app/                          # Lógica de la aplicación (PHP)
+│   ├── config/                   # Configuración de la aplicación
+│   │   └── constantes.php        # Constantes globales del proyecto
+│   ├── conexion/                 # Gestión de base de datos
+│   │   └── ejConexion.php        # Ejemplo de conexión a la BD
+│   ├── controladores/            # Controladores de la aplicación
+│   │   └── ejemploControlador.php # Ejemplo de controlador
+│   └── funciones/                # Funciones auxiliares y utilidades
+│       └── ejemploFuncion.php    # Ejemplo de función auxiliar
+├── public/                       # Archivos accesibles públicamente
+│   ├── assets/                   # Imágenes y recursos estáticos
+│   │   ├── style/                # Archivos CSS (Tailwind)
+│   │   │   ├── styles.css        # CSS compilado de Tailwind
+│   │   │   └── tailwind.css      # Importación de Tailwind
+│   │   └── img.png               # Recursos de imágenes
+│   └── vistas/                   # Vistas públicas
+│       ├── includes/             # Archivos incluidos (header, footer)
+│       │   └── header.php        # Encabezado de la aplicación
+│       └── index.php             # Punto de entrada de la aplicación
+├── node_modules/                 # Dependencias de npm
+├── .env                          # Archivo de configuración de entorno
+├── .gitignore                    # Archivo de configuración de Git
+├── package.json                  # Configuración de npm
+├── package-lock.json             # Bloqueo de versiones de dependencias
+└── README.md                     # Documentación del proyecto
 ```
 
 ---
@@ -78,19 +86,12 @@ Para que los estilos de Tailwind funcionen, debes instalar las dependencias de N
 
 ```bash
 npm install
-npm run build
 ```
 
-Si deseas que Tailwind compile los cambios automáticamente mientras desarrollas:
+Miewtras desarrollas, ejecuta el siguiente comando para que Tailwind guarde los cambios automáticamente y puedas verlos en el navegador:
 
 ```bash
-npm run watch
-```
-
-Cada vez que hagas un cambio de css con tailwind antes de subir a github ejecuta:
-
-```bash
-npm run build
+npm run css
 ```
 
 Para subir en github ejecuta:
@@ -105,7 +106,7 @@ Cada vez que entres en el proyecto en VSCODE ejecuta:
 
 ```bash
 git pull
-npm run watch
+npm run css
 ```
 
 ### 3. Configurar la Base de Datos
