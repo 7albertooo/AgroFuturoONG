@@ -143,36 +143,3 @@ git push -u origin tu-rama
 
 👉 Unir `tu-rama` → `main`
 
----
-
-## ⚠️ Conflictos (lo que da miedo 😅)
-
-### ¿Cuándo aparecen?
-
-Cuando tú y tu compañero modificáis **la misma línea del mismo archivo**.
-
-**Ejemplo:**
-Los dos tocáis `header.php`.
-
-### Cómo evitarlos
-
-* ✅ Cada uno en su rama
-* ✅ No tocar los mismos archivos a la vez
-* ✅ Hacer `git pull` antes de empezar
-
-### 🧯 Si hay conflicto (resumen rápido)
-
-Git te mostrará algo así:
-
-```text
-tu código
-código de tu compañero
-```
-
-Pasos para resolverlo:
-
-1. ✔️ Decidir qué se queda
-2. ✔️ Guardar
-3. ✔️ `git add`
-4. ✔️ `git commit`
-
