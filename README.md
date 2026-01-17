@@ -105,8 +105,14 @@ Cada vez que entres en el proyecto en VSCODE ejecuta:
 
 ```bash
 git pull
+```
+Y si vas a desarrollar ejecuta:
+
+```bash
 npm run css
 ```
+Y arranca el servidor de XAMPP.
+
 
 ### 3. Configurar la Base de Datos
 
