@@ -113,33 +113,3 @@ npm run css
 1. Abre **phpMyAdmin** (`http://localhost/phpmyadmin`).
 2. Crea una nueva base de datos llamada `agrofuturo`.
 3. Importa el archivo SQL (si está disponible) o configura las tablas necesarias.
-
-
-
-# 🔥 Flujo Para Trabajar en Proyecto
-
-## 1️⃣ Actualizar `main`
-
-```bash
-git checkout main
-git pull
-```
-
-## 2️⃣ Crear rama nueva
-
-```bash
-git checkout -b tu-rama
-```
-
-## 3️⃣ Programar y guardar
-
-```bash
-git add .
-git commit -m "comentario"
-git push -u origin tu-rama
-```
-
-## 4️⃣ Pull Request en GitHub
-
-👉 Unir `tu-rama` → `main`
-
