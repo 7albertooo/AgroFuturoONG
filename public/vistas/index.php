@@ -7,7 +7,7 @@ include_once 'header.php';
 ?>
 
 
-<section class="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center lg:min-h-150 lg:flex-row justify-center lg:items-center gap-50">
+<section class="max-w-7xl mx-auto px-4 py-3 flex flex-col items-center lg:min-h-150 lg:flex-row justify-center lg:items-center lg:gap-50 gap-10">
 
     <!-- Texto de bienvenida -->
     <div class="text-center lg:text-start max-w-120">
