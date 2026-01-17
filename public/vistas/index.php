@@ -7,16 +7,17 @@ include_once 'header.php';
 ?>
 
 
-<section class="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center lg:min-h-150 lg:flex-row justify-center lg:items-center gap-8">
+<section class="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center lg:min-h-150 lg:flex-row justify-center lg:items-center gap-50">
 
     <!-- Texto de bienvenida -->
-    <div class="text-center lg:text-start">
+    <div class="text-center lg:text-start max-w-120">
         <h2 class="text-4xl font-bold text-gray-800 mb-1">Sembramos <span class="text-green-600">esperanza</span> ;</h2>
         <h2 class="text-4xl font-bold text-gray-800 mb-1">cosechamos <span class="text-green-600">futuro</span></h2>
         <p class="text-lg text-gray-600 mb-8">Apoyamos a comunidades rurales con agricultura sostenible y microcréditos para construir un desarrollo económico duradero.</p>
         <a href="#" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300">Solicitar Ayuda</a>
         <a href="#" class="px-6 py-2 border-2 border-green-600 text-green-600 font-semibold rounded-full hover:bg-green-600 hover:text-white transition-all duration-300">Apoyar</a>
     </div>
+
     </div>
 
     <!-- Cajas datos -->
