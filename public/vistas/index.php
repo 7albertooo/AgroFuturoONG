@@ -40,7 +40,7 @@ include_once 'header.php';
                 <h2 class="text-xl font-bold">45</h2>
                 <p class="text-gray-600">Ciudades</p>
             </div>
-            <div class="w-60 p-4 text-center text-green-600 border-2 border-green-600 rounded hover:scale-105 transition-all duration-300">
+            <div class="w-60 p-4 text-center text-green-600 border-2 border-green-600 rounded hover:scale-105 transition-all duration-300 ">
                 <h2 class="text-xl font-bold">92%</h2>
                 <p class="text-gray-600">Tasa de Éxito</p>
             </div>

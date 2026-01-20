@@ -80,19 +80,8 @@ Accede a la carpeta `htdocs` de XAMPP, abre una terminal y ejecuta:
 git clone https://github.com/7albertooo/AgroFuturoONG.git
 ```
 
-### 2. Instalar Dependencias y Generar CSS
+### 2. Subir y Actualizar Cambios
 
-Para que los estilos de Tailwind funcionen, debes instalar las dependencias de Node.js y compilar el archivo CSS:
-
-```bash
-npm install
-```
-
-Miewtras desarrollas, ejecuta el siguiente comando para que Tailwind guarde los cambios automáticamente y puedas verlos en el navegador:
-
-```bash
-npm run css
-```
 
 Para subir en github ejecuta:
 
@@ -106,7 +95,6 @@ Cada vez que entres en el proyecto en VSCODE ejecuta:
 
 ```bash
 git pull
-npm run css
 ```
 
 ### 3. Configurar la Base de Datos
@@ -116,64 +104,4 @@ npm run css
 3. Importa el archivo SQL (si está disponible) o configura las tablas necesarias.
 
 
-
-# 🔥 Flujo Para Trabajar en Proyecto
-
-## 1️⃣ Actualizar `main`
-
-```bash
-git checkout main
-git pull
-```
-
-## 2️⃣ Crear rama nueva
-
-```bash
-git checkout -b feature-comentarios
-```
-
-## 3️⃣ Programar y guardar
-
-```bash
-git add .
-git commit -m "Sistema de comentarios"
-git push -u origin feature-comentarios
-```
-
-## 4️⃣ Pull Request en GitHub
-
-👉 Unir `feature-comentarios` → `main`
-
----
-
-## ⚠️ Conflictos (lo que da miedo 😅)
-
-### ¿Cuándo aparecen?
-
-Cuando tú y tu compañero modificáis **la misma línea del mismo archivo**.
-
-**Ejemplo:**
-Los dos tocáis `header.php`.
-
-### Cómo evitarlos
-
-* ✅ Cada uno en su rama
-* ✅ No tocar los mismos archivos a la vez
-* ✅ Hacer `git pull` antes de empezar
-
-### 🧯 Si hay conflicto (resumen rápido)
-
-Git te mostrará algo así:
-
-```text
-tu código
-código de tu compañero
-```
-
-Pasos para resolverlo:
-
-1. ✔️ Decidir qué se queda
-2. ✔️ Guardar
-3. ✔️ `git add`
-4. ✔️ `git commit`
 
