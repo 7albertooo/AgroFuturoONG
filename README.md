@@ -57,8 +57,7 @@ AgroFuturoONG/
 │   │   │   └── tailwind.css      # Importación de Tailwind
 │   │   └── img.png               # Recursos de imágenes
 │   └── vistas/                   # Vistas públicas
-│       ├── includes/             # Archivos incluidos (header, footer)
-│       │   └── header.php        # Encabezado de la aplicación
+│       │── header.php        # Encabezado de la aplicación
 │       └── index.php             # Punto de entrada de la aplicación
 ├── node_modules/                 # Dependencias de npm
 ├── .env                          # Archivo de configuración de entorno
@@ -88,7 +87,7 @@ Para subir en github ejecuta:
 ```bash
 git add .
 git commit -m "Mensaje"
-git push
+git push -u origin tu-rama
 ```
 
 Cada vez que entres en el proyecto en VSCODE ejecuta:
@@ -96,6 +95,8 @@ Cada vez que entres en el proyecto en VSCODE ejecuta:
 ```bash
 git pull
 ```
+Y arranca el servidor de XAMPP.
+
 
 ### 3. Configurar la Base de Datos
 
