@@ -6,22 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $APP_NAME; ?></title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Farsan&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+
+        .suse-mono-regular {
+            font-family: "SUSE Mono", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+      
+    </style>
+
 </head>
 
-<body class="bg-gray-50 relative min-h-screen overflow-x-hidden">
+<body class="bg-gray-50 relative min-h-screen overflow-x-hidden suse-mono-regular">
 
     <header>
-        <nav class="w-11/12 md:w-3/4 mx-auto bg-white rounded-full shadow-md mt-6 mb-6 px-6 py-4 flex items-center justify-between">
+        <nav class="w-11/12 md:w-3/4 mx-auto bg-white rounded-full shadow-md mt-6 px-6 py-4 flex items-center justify-between">
             <div class="w-full grid grid-cols-2 lg:grid-cols-3 items-center">
 
-                <!-- Logo: Column 1 -->
+
                 <div class="flex justify-start">
-                    <a class="text-xl font-bold text-green-600" href="index.php">
+                    <a class="text-xl font-bold text-green-700" href="index.php">
                         <?php echo $APP_NAME; ?>
                     </a>
                 </div>
 
-                <!-- Mobile menu button (Only visible on mobile, takes col 2 in 2-col layout) -->
+
                 <div class="flex justify-end lg:hidden">
                     <button id="menu-button" class="p-2 text-gray-600 hover:text-gray-900 focus:outline-none" type="button" aria-label="Toggle navigation" onclick="toggleMenu(event)">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,38 +44,38 @@
                     </button>
                 </div>
 
-                <!-- Desktop Menu: Column 2 -->
+
                 <div class="hidden lg:flex justify-center">
                     <ul class="flex space-x-8">
                         <li>
-                            <a class="text-gray-600 font-medium hover:text-green-600 active:text-green-600 transition-colors" href="index.php">Inicio</a>
+                            <a class="text-gray-600 font-medium hover:text-green-700 active:text-green-700 transition-colors" href="index.php">Inicio</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 font-medium hover:text-green-600 active:text-green-600 transition-colors" href="#">Solicitar Ayuda</a>
+                            <a class="text-gray-600 font-medium hover:text-green-700 active:text-green-700 transition-colors" href="#">Solicitar Ayuda</a>
                         </li>
                         <li>
-                            <a class="text-gray-600 font-medium hover:text-green-600 active:text-green-600 transition-colors" href="#">Apoyar</a>
+                            <a class="text-gray-600 font-medium hover:text-green-700 active:text-green-700 transition-colors" href="#">Apoyar</a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Action Button: Column 3 -->
+
                 <div class="hidden lg:flex justify-end">
                     <form action="../../../app/controladores/contLogin.php" method="post">
-                        <button class="px-6 py-2 border-2 border-green-600 text-green-600 font-semibold rounded-full hover:bg-green-600 hover:text-white transition-all duration-300" type="submit">Iniciar Sesion</button>
+                        <button class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300" type="submit">Iniciar Sesion</button>
                     </form>
                 </div>
             </div>
 
-            <!-- Mobile Menu (hidden by default) -->
+
             <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 w-screen h-screen flex-col justify-center items-center text-center bg-white z-50">
                 <ul class="flex flex-col space-y-4">
-                    <li><a class="text-gray-800 font-medium hover:text-green-600 block px-4 py-2" href="#">Inicio</a></li>
-                    <li><a class="text-gray-600 hover:text-green-600 block px-4 py-2" href="#">Solicitar Ayuda</a></li>
-                    <li><a class="text-gray-600 hover:text-green-600 block px-4 py-2" href="#">Apoyar</a></li>
+                    <li><a class="text-gray-800 font-medium hover:text-green-700 block px-4 py-2" href="#">Inicio</a></li>
+                    <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="#">Solicitar Ayuda</a></li>
+                    <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="#">Apoyar</a></li>
                     <li class="pt-2">
                         <form action="../../../app/controladores/contLogin.php" method="post" class="w-full">
-                            <button class="w-full px-6 py-2 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300" type="submit">Iniciar Sesion</button>
+                            <button class="w-full px-6 py-2 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300" type="submit">Iniciar Sesion</button>
                         </form>
                     </li>
                 </ul>
