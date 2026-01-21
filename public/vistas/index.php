@@ -151,7 +151,7 @@ include_once 'header.php';
 
 </section>
 
-<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center ">
+<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-130  justify-center lg:items-center ">
 
 
 
