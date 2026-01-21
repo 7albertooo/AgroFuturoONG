@@ -79,19 +79,8 @@ Accede a la carpeta `htdocs` de XAMPP, abre una terminal y ejecuta:
 git clone https://github.com/7albertooo/AgroFuturoONG.git
 ```
 
-### 2. Instalar Dependencias y Generar CSS
+### 2. Subir y Actualizar Cambios
 
-Para que los estilos de Tailwind funcionen, debes instalar las dependencias de Node.js y compilar el archivo CSS:
-
-```bash
-npm install
-```
-
-Miewtras desarrollas, ejecuta el siguiente comando para que Tailwind guarde los cambios automáticamente y puedas verlos en el navegador:
-
-```bash
-npm run css
-```
 
 Para subir en github ejecuta:
 
@@ -106,11 +95,6 @@ Cada vez que entres en el proyecto en VSCODE ejecuta:
 ```bash
 git pull
 ```
-Y si vas a desarrollar ejecuta:
-
-```bash
-npm run css
-```
 Y arranca el servidor de XAMPP.
 
 
@@ -119,3 +103,6 @@ Y arranca el servidor de XAMPP.
 1. Abre **phpMyAdmin** (`http://localhost/phpmyadmin`).
 2. Crea una nueva base de datos llamada `agrofuturo`.
 3. Importa el archivo SQL (si está disponible) o configura las tablas necesarias.
+
+
+
