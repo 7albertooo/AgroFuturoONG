@@ -52,7 +52,7 @@ include_once 'header.php';
 
 </section>
 
-<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center  gap-10 bg-green-700">
+<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center  gap-10 bg-linear-to-b from-green-600 to-green-800">
 
     <div class="text-center max-w-120">
         <h2 class="text-3xl font-bold text-white mb-4">¿Cómo te ayudamos?</h2>
