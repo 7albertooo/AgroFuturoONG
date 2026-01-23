@@ -7,6 +7,7 @@
         <div class="sm:flex sm:items-center sm:justify-between">
 
             <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 md:ml-20">
+                <img src="../assets/hoja.png" alt="hoja" class="inline w-10 h-10">
                 <span class="text-center text-2xl font-semibold text-gray-50"><?php echo $APP_NAME; ?>
             </a>
 

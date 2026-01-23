@@ -31,6 +31,7 @@
 
                 <div class="flex justify-start">
                     <a class="text-xl font-bold text-green-700" href="index.php">
+                        <img src="../assets/hoja.png" alt="hoja" class="inline w-8 h-8">
                         <?php echo $APP_NAME; ?>
                     </a>
                 </div>
