@@ -62,9 +62,7 @@
 
 
                 <div class="hidden lg:flex justify-end">
-                    <form action="../../../app/controladores/contLogin.php" method="post">
-                        <button class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300" type="submit">Iniciar Sesion</button>
-                    </form>
+                    <a href="login.php" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">Iniciar Sesión</a>
                 </div>
             </div>
 
