@@ -6,10 +6,10 @@ include_once '../../app/config/constantes.php';
 include_once 'header.php';
 ?>
 
-<section class="max-w-7xl mx-auto px-4 flex flex-col items-center min-h-210 md:min-h-240 lg:min-h-130 xl:min-h-160 lg:flex-row justify-center lg:items-center">
+<section class="max-w-screen mx-auto px-4 flex flex-col items-center min-h-180 md:min-h-240 lg:min-h-130 xl:min-h-160 lg:flex-row justify-center lg:items-center">
 
 
-    <div class="text-center max-w-120  w-90 border-2 border-gray-100 p-10 rounded-lg shadow-lg">
+    <div class="text-center  w-90 border-2 border-gray-100 p-10 rounded-lg shadow-lg">
 
         <form action="#" method="post">
             <img src="../assets/hoja.png" alt="hoja" class="mx-auto w-16 h-16 mb-4">
