@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-gray-50 relative min-h-screen overflow-x-hidden suse-mono-regular">
+<body class="bg-gray-50 relative overflow-x-hidden suse-mono-regular justify-center items-center">
 
     <header>
         <nav class="w-11/12 md:w-3/4 mx-auto bg-white rounded-full shadow-md mt-6 px-6 py-4 flex items-center justify-between">
@@ -61,8 +61,10 @@
                 </div>
 
 
-                <div class="hidden lg:flex justify-end">
+                <div class="hidden lg:flex justify-end gap-2">
                     <a href="login.php" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">Iniciar Sesión</a>
+                    <a href="registrar.php" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">Registrarse</a>
+                    
                 </div>
             </div>
 
