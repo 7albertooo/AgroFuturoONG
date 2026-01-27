@@ -7,9 +7,9 @@ include_once 'header.php';
 ?>
 
 
-<section class="max-w-7xl mx-auto px-4 flex flex-col items-center min-h-210 md:min-h-240 lg:min-h-180 xl:min-h-215 lg:flex-row justify-center lg:items-center lg:gap-50 gap-10">
+<section class="max-w-screen mx-auto px-4 flex flex-col items-center min-h-210 md:min-h-240 lg:min-h-180 xl:min-h-180 lg:flex-row justify-center lg:items-center lg:gap-50 gap-10 ">
 
-    
+
     <div class="text-center lg:text-start max-w-120">
         <h2 class="text-4xl font-bold text-gray-800 mb-1">Sembramos <span class="text-green-700">esperanza</span> ;</h2>
         <h2 class="text-4xl font-bold text-gray-800 mb-1">cosechamos <span class="text-green-700">futuro</span></h2>
@@ -20,7 +20,7 @@ include_once 'header.php';
 
     </div>
 
-    
+
 
     <div class="flex flex-col gap-4">
 
@@ -60,7 +60,7 @@ include_once 'header.php';
     </div>
 
     <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-6 justify-items-center">
-        
+
         <div class="w-80 h-50 p-4 text-center text-gray-600 border-2 border-gray-300 shadow-sm shadow-black/5 hover:shadow-lg rounded hover:scale-105 transition-all duration-300">
             <div class="w-15 h-15 mx-auto mb-2">
                 <img src="../assets/agSos.png" alt="" class="w-full h-full object-cover">
@@ -69,7 +69,7 @@ include_once 'header.php';
             <p class="text-gray-100">Tecnicas de cultivo ecológicas adaptadas al clima local para maximizar tu producción.</p>
         </div>
 
-        
+
         <div class="w-80 h-50 p-4 text-center text-gray-600 border-2 border-gray-300 shadow-sm shadow-black/5 hover:shadow-lg rounded hover:scale-105 transition-all duration-300">
             <div class="w-15 h-15 mx-auto mb-2">
                 <img src="../assets/credito.png" alt="" class="w-full h-full object-cover">
@@ -78,7 +78,7 @@ include_once 'header.php';
             <p class="text-gray-100">Acceso a financiamiento flexible para impulsar tu proyecto agrícola o emprendimiento.</p>
         </div>
 
-        
+
         <div class="w-80 h-50 p-4 text-center text-gray-600 border-2 border-gray-300 shadow-sm shadow-black/5 hover:shadow-lg rounded hover:scale-105 transition-all duration-300">
             <div class="w-15 h-15 mx-auto mb-2">
                 <img src="../assets/formacion.png" alt="" class="w-full h-full object-cover">
@@ -87,7 +87,7 @@ include_once 'header.php';
             <p class="text-gray-100">Capacitación técnica y gestión agrícola para mejorar tus habilidades.</p>
         </div>
 
-       
+
         <div class="w-80 h-50 p-4 text-center text-gray-600 border-2 border-gray-300 shadow-sm shadow-black/5 hover:shadow-lg rounded hover:scale-105 transition-all duration-300">
             <div class="w-15 h-15 mx-auto mb-2">
                 <img src="../assets/comunidad.png" alt="" class="w-full h-full object-cover">
@@ -108,7 +108,7 @@ include_once 'header.php';
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 justify-items-center">
-        
+
         <div class="w-80 h-50 p-4 text-center text-gray-600 hover:scale-105 transition-all duration-300 ">
             <div class="w-15 h-15 mx-auto mb-2 border-2 border-green-700 rounded-full flex items-center justify-center">
                 <h2 class="text-xl font-bold text-green-700">1</h2>
@@ -117,7 +117,7 @@ include_once 'header.php';
             <p class="text-gray-600">Envía tu solicitud con los datos de tu proyecto.</p>
         </div>
 
-       
+
         <div class="w-80 h-50 p-4 text-center text-gray-600 hover:scale-105 transition-all duration-300">
             <div class="w-15 h-15 mx-auto mb-2 border-2 border-green-700 rounded-full flex items-center justify-center">
                 <h2 class="text-xl font-bold text-green-700">2</h2>
@@ -126,7 +126,7 @@ include_once 'header.php';
             <p class="text-gray-600">Nuestra equipo evalúa tu solicitud y te notifica la aprobación.</p>
         </div>
 
-        
+
         <div class="w-80 h-50 p-4 text-center text-gray-600 hover:scale-105 transition-all duration-300">
             <div class="w-15 h-15 mx-auto mb-2 border-2 border-green-700 rounded-full flex items-center justify-center">
                 <h2 class="text-xl font-bold text-green-700">3</h2>
@@ -135,7 +135,7 @@ include_once 'header.php';
             <p class="text-gray-600">Completa los módulos de capacitación en línea.</p>
         </div>
 
-       
+
         <div class="w-80 h-50 p-4 text-center text-gray-600 hover:scale-105 transition-all duration-300">
             <div class="w-15 h-15 mx-auto mb-2 border-2 border-green-700 rounded-full flex items-center justify-center">
                 <h2 class="text-xl font-bold text-green-700">4</h2>
