@@ -100,7 +100,7 @@ include_once 'header.php';
 
 </section>
 
-<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center  gap-10 bg-gray-100  mb-10">
+<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center  gap-10 bg-gray-100 ">
 
     <div class="text-center max-w-120">
         <h2 class="text-3xl font-bold text-green-700 mb-4">Proceso Simple</h2>
@@ -151,7 +151,42 @@ include_once 'header.php';
 
 </section>
 
-<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-130  justify-center lg:items-center ">
+
+<section class="w-full mx-auto p-10 flex flex-col items-center gap-10">
+
+    <h2 class="text-3xl text-center font-bold text-green-700 mb-4">
+        Galeria de <span>imagenes</span>
+    </h2>
+
+
+    <div class="relative w-full max-w-4xl overflow-hidden rounded-lg shadow-lg">
+
+   
+        <div id="carousel" class="flex transition-transform duration-500">
+
+            <img src="../assets/pexels-anntarazevich-7299993.jpg" class="w-full flex-shrink-0">
+            <img src="../assets/pexels-c-t-phat-546614745-17915456.jpg" class="w-full flex-shrink-0">
+            <img src="../assets/pexels-simon-kan-56314180-11534647.jpg" class="w-full flex-shrink-0">
+            <img src="../assets/pexels-yankrukov-5478858.jpg" class="w-full flex-shrink-0">
+
+        </div>
+
+        
+        <button id="prev" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full z-10 opacity-80 hover:opacity-100">
+            ❮
+        </button>
+
+        <button id="next" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full z-10 opacity-80 hover:opacity-100">
+            ❯
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-130  justify-center lg:items-center bg-gray-100">
 
 
 
@@ -175,3 +210,21 @@ include_once 'header.php';
 </section>
 
 <?php include 'footer.php'; ?>
+
+
+<script>
+    const carousel = document.getElementById("carousel");
+    const total = carousel.children.length;
+    let index = 0;
+
+    document.getElementById("next").onclick = () => {
+        index = (index + 1) % total;
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+    };
+
+    document.getElementById("prev").onclick = () => {
+        index = (index - 1 + total) % total;
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+    };
+
+</script>
