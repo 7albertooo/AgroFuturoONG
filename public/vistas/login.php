@@ -12,7 +12,8 @@ include_once 'header.php';
     <div class="text-center max-w-120  w-90 border-2 border-gray-100 p-10 rounded-lg shadow-lg">
 
         <form action="#" method="post">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Iniciar Sesión</h2>
+            <img src="../assets/hoja.png" alt="hoja" class="mx-auto w-16 h-16 mb-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Iniciar <span class="text-green-700">Sesión</span></h2>
             <div class="mb-6">
                 <label for="username" class="block text-gray-700 mb-2 text-start">Usuario</label>
                 <input type="text" id="username" name="username" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700" required>
@@ -25,5 +26,4 @@ include_once 'header.php';
         </form>
 
     </div>
-
 </section>
