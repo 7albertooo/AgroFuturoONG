@@ -9,7 +9,7 @@ include_once 'header.php';
 <section class="max-w-screen mx-auto px-4 flex flex-col items-center min-h-180 md:min-h-240 lg:min-h-130 xl:min-h-160 lg:flex-row justify-center lg:items-center">
 
 
-    <div class="text-center  w-90 border-2 border-gray-100 p-10 rounded-lg shadow-lg">
+    <div class="text-center  w-100 border-2 border-gray-100 p-10 rounded-lg shadow-lg">
 
         <form action="#" method="post">
             <img src="../assets/hoja.png" alt="hoja" class="mx-auto w-16 h-16 animate-bounce [animation-iteration-count:1] [animation-fill-mode:forwards] duration-700 ">
@@ -24,6 +24,10 @@ include_once 'header.php';
             </div>
             <button type="submit" class="w-full px-6 py-3 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300">Iniciar Sesión</button>
         </form>
+
+        <div class="mt-4 text-center max-w-80 mx-auto">
+        <p>¿No tienes cuenta?<a href="#" class="text-green-700 hover:text-green-800">Regístrate aquí</a></p>
+        </div>
 
     </div>
 </section>
