@@ -30,7 +30,7 @@
 
 
                 <div class="flex justify-start">
-                    <a class="text-xl font-bold text-green-700" href="index.php">
+                    <a class="text-xl font-bold bg-gradient-to-r from-emerald-400 to-green-800 bg-clip-text text-transparent" href="index.php">
                         <img src="../assets/hoja.png" alt="hoja" class="inline w-6 h-6 md:w-8 md:h-8">
                         <?php echo $APP_NAME; ?>
                     </a>
@@ -69,13 +69,11 @@
 
             <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 w-screen h-screen flex-col justify-center items-center text-center bg-white z-50">
                 <ul class="flex flex-col space-y-4">
-                    <li><a class="text-gray-800 font-medium hover:text-green-700 block px-4 py-2" href="#">Inicio</a></li>
+                    <li><a class="text-gray-800 font-medium hover:text-green-700 block px-4 py-2" href="index.php">Inicio</a></li>
                     <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="#">Solicitar Ayuda</a></li>
                     <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="#">Apoyar</a></li>
                     <li class="pt-2">
-                        <form action="../../../app/controladores/contLogin.php" method="post" class="w-full">
-                            <button class="w-full px-6 py-2 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300" type="submit">Iniciar Sesion</button>
-                        </form>
+                        <a href="login.php" class="w-full px-6 py-2 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300">Iniciar Sesión</a>
                     </li>
                 </ul>
             </div>
