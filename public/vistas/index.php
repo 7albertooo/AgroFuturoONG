@@ -7,7 +7,7 @@ include_once 'header.php';
 ?>
 
 
-<section class="max-w-screen mx-auto px-4 flex flex-col items-center min-h-210 md:min-h-240 lg:min-h-180 xl:min-h-180 lg:flex-row justify-center lg:items-center lg:gap-50 gap-10 ">
+<section class="max-w-screen mx-auto px-4 flex flex-col items-center min-h-210 md:min-h-240 lg:min-h-180 xl:min-h-215 lg:flex-row justify-center lg:items-center lg:gap-50 gap-10 ">
 
 
     <div class="text-center lg:text-start max-w-120">
