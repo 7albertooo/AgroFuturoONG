@@ -63,7 +63,7 @@
 
                 <div class="hidden lg:flex justify-end gap-2">
                     <a href="login.php" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">Iniciar Sesión</a>
-                    <a href="registrar.php" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">Registrarse</a>
+                    <a href="registro.php" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">Registrarse</a>
                     
                 </div>
             </div>
