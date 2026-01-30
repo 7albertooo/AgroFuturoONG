@@ -1,39 +1,108 @@
 <?php
-//Incluimos el archivo de constantes
 include_once '../../app/config/constantes.php';
-
-//Incluimos el header
-include_once 'header.php';
 ?>
 
-<section class="max-w-screen mx-auto px-4 flex flex-col items-center min-h-180 md:min-h-240 lg:min-h-130 xl:min-h-200 lg:flex-row justify-center lg:items-center">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $APP_NAME; ?></title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Farsan&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+
+        .suse-mono-regular {
+            font-family: "SUSE Mono", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                }
+             to {
+                 opacity: 1;
+                }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+      
+    </style>
+
+</head>
+
+<body class="bg-gray-50 relative overflow-x-hidden suse-mono-regular justify-center items-center animate-fadeIn">
+
+    <a href="index.php"
+        class="fixed top-6 left-6 flex items-center gap-2 text-gray-600 hover:text-green-700 transition font-medium z-50">
+        ← Volver atrás
+    </a>
 
 
-    <div class="text-center w-100 border-2 border-gray-100 p-10 rounded-lg shadow-lg">
+    <section class="min-h-screen flex items-center justify-center p-4">
 
-        <form action="#" method="post">
-            <img src="../assets/hoja.png" alt="hoja" class="mx-auto w-16 h-16 animate-bounce [animation-iteration-count:1] [animation-fill-mode:forwards] duration-700 ">
-            <h2 class="text-3xl font-bold bg-gradient-to-r from-emerald-400 to-green-800 bg-clip-text text-transparent mb-6">Registro</h2>
-            <div class="mb-6">
-                <label for="username" class="block text-gray-700 mb-2 text-start">Usuario</label>
-                <input type="text" id="username" name="username" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700" required>
+        <div class="flex flex-col md:flex-row w-full max-w-5xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden min-h-[600px]">
+
+
+            <div class="md:w-1/2 flex flex-col items-center justify-center p-12 bg-white">
+                <div class="w-full max-w-md text-center">
+                    <h2 class="text-4xl font-bold text-green-700 mb-2">Registro</h2>
+                    <p class="text-gray-500 mb-10 text-lg">Unete a nosotros!!</p>
+
+                    <form action="#" method="post" class="space-y-6 w-full">
+                        <div class="relative">
+                            <input
+                                type="text"
+                                placeholder="Introduce tu usuario"
+                                class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
+                                required>
+                        </div>
+
+                        <div class="relative">
+                            <input
+                                type="email"
+                                placeholder="Introduce tu email"
+                                class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
+                                required>
+                        </div>
+
+                        <div class="relative">
+                            <input
+                                type="password"
+                                placeholder="Introduce tu contraseña"
+                                class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
+                                required>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="w-full py-4 bg-gradient-to-r from-yellow-300 to-green-700 text-white font-bold rounded-2xl
+                               hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-lg shadow-green-700/30 text-lg mt-4 cursor-pointer">
+                            Registrarse
+                        </button>
+
+                        <div class="mt-4 text-center max-w-80 mx-auto">
+                            <p>¿Ya tienes cuenta? <a href="login.php" class="text-green-700 hover:text-green-800">Inicia Sesión</a></p>
+                        </div>
+
+                    </form>
+                </div>
             </div>
-            <div class="mb-8">
-                <label for="password" class="block text-gray-700 mb-2 text-start">Contraseña</label>
-                <input type="password" id="password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700" required>
+
+            <div class="md:w-1/2  flex items-center justify-center ">
+                <img src="../assets/detail-rice-plant-sunset-valencia-with-plantation-out-focus-rice-grains-plant-seed.jpg" alt="Registro Ilustración" class="w-full h-full object-cover">
             </div>
 
-            <div class="mb-8">
-                <label for="email" class="block text-gray-700 mb-2 text-start">Email</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700" required>
-            </div>
-
-            <button type="submit" class="w-full px-6 py-3 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300">Registrarse</button>
-        </form>
-
-        <div class="mt-4 text-center max-w-80 mx-auto">
-        <p>¿Ya tienes cuenta? <a href="#" class="text-green-700 hover:text-green-800">Inicia Sesión</a></p>
         </div>
+    </section>
 
-    </div>
-</section>
+</body>

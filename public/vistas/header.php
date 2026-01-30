@@ -17,12 +17,25 @@
             font-weight: 300;
             font-style: normal;
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                }
+             to {
+                 opacity: 1;
+                }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
       
     </style>
 
 </head>
 
-<body class="bg-gray-50 relative overflow-x-hidden suse-mono-regular justify-center items-center">
+<body class="bg-gray-50 relative overflow-x-hidden suse-mono-regular justify-center items-center animate-fadeIn">
 
     <header>
         <nav class="w-11/12 md:w-3/4 mx-auto bg-white rounded-full shadow-md mt-6 px-6 py-4 flex items-center justify-between">
