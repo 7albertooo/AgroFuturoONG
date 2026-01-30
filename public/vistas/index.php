@@ -7,12 +7,12 @@ include_once 'header.php';
 ?>
 
 
-<section class="max-w-screen mx-auto px-4 flex flex-col items-center min-h-210 md:min-h-240 lg:min-h-180 xl:min-h-180 lg:flex-row justify-center lg:items-center lg:gap-50 gap-10 ">
+<section class="max-w-screen mx-auto px-4 flex flex-col items-center min-h-210 md:min-h-240 lg:min-h-180 xl:min-h-190 lg:flex-row justify-center lg:items-center lg:gap-50 gap-10 ">
 
 
     <div class="text-center lg:text-start max-w-120">
-        <h2 class="text-4xl font-bold text-gray-800 mb-1">Sembramos <span class="text-green-700">esperanza</span> ;</h2>
-        <h2 class="text-4xl font-bold text-gray-800 mb-1">cosechamos <span class="text-green-700">futuro</span></h2>
+        <h2 class="text-4xl font-bold text-gray-800 mb-1">Sembramos <span class="bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent italic">esperanza</span> ;</h2>
+        <h2 class="text-4xl font-bold text-gray-800 mb-1">cosechamos <span class="bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent italic">futuro</span></h2>
         <p class="text-lg text-gray-600 mb-8">Apoyamos a comunidades rurales con agricultura sostenible y microcréditos para construir un desarrollo económico duradero.</p>
         <a href="#" class="px-6 py-3 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300">Solicitar Ayuda</a>
         <a href="#" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">Apoyar</a>
@@ -52,14 +52,18 @@ include_once 'header.php';
 
 </section>
 
-<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center  gap-10 bg-linear-to-b from-green-600 to-green-800">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#16A34A" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+
+<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center  gap-10 bg-linear-to-b from-[#16A34A] to-[#166534]">
+
+    
 
     <div class="text-center max-w-120">
         <h2 class="text-3xl font-bold text-white mb-4">¿Cómo te ayudamos?</h2>
         <p class="text-lg text-gray-100 mb-4">Ofrecemos un programa integral para impulsar tu proyecto agrícola y mejorar tu economía familiar.</p>
     </div>
 
-    <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-6 justify-items-center">
+    <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-4 gap-6 justify-items-center pb-4">
 
         <div class="w-80 h-50 p-4 text-center text-gray-600 border-2 border-gray-300 shadow-sm shadow-black/5 hover:shadow-lg rounded hover:scale-105 transition-all duration-300">
             <div class="w-15 h-15 mx-auto mb-2">
@@ -100,10 +104,12 @@ include_once 'header.php';
 
 </section>
 
-<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center  gap-10 bg-gray-100 ">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#166534" fill-opacity="1" d="M0,256L48,256C96,256,192,256,288,218.7C384,181,480,107,576,117.3C672,128,768,224,864,266.7C960,309,1056,299,1152,250.7C1248,203,1344,117,1392,74.7L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+
+<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center lg:items-center  gap-10 bg-linear-to-b from-gray-50 to-gray-100">
 
     <div class="text-center max-w-120">
-        <h2 class="text-3xl font-bold text-green-700 mb-4">Proceso Simple</h2>
+        <h2 class="text-3xl font-bold bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent mb-4">Proceso Simple</h2>
         <p class="text-lg text-gray-600 mb-8">En 4 sencillos pasos puedes acceder a nuestro programa de apoyo.</p>
     </div>
 
@@ -152,41 +158,34 @@ include_once 'header.php';
 </section>
 
 
-<section class="w-full mx-auto p-10 flex flex-col items-center gap-10">
+<section class="w-full mx-auto flex flex-col items-center gap-20 p-20 bg-white ">
 
-    <h2 class="text-3xl text-center font-bold text-green-700 mb-4">
-        Galeria de <span>imagenes</span>
-    </h2>
+        <h3 class="font-bold text-4xl text- text-center"> Galeria de <span class="bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent mb-20 italic">Imagenes</span></h3>
 
-
-    <div class="relative w-full max-w-4xl overflow-hidden rounded-lg shadow-lg">
-
-   
-        <div id="carousel" class="flex transition-transform duration-500">
-
-            <img src="../assets/pexels-anntarazevich-7299993.jpg" class="w-full flex-shrink-0">
-            <img src="../assets/pexels-c-t-phat-546614745-17915456.jpg" class="w-full flex-shrink-0">
-            <img src="../assets/pexels-simon-kan-56314180-11534647.jpg" class="w-full flex-shrink-0">
-            <img src="../assets/pexels-yankrukov-5478858.jpg" class="w-full flex-shrink-0">
-
+    <div class="flex flex-col md:flex-row gap-10">
+        <div class="h-120 w-80 ">
+            <img src="../assets/pexels-anntarazevich-7299993.jpg" alt="" class="w-full h-full object-cover rounded-lg -rotate-5  hover:-rotate-0 hover:scale-105 transition-all duration-300">
         </div>
 
-        
-        <button id="prev" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full z-10 opacity-80 hover:opacity-100">
-            ❮
-        </button>
+        <div class="h-120 w-80 ">
+            <img src="../assets/pexels-c-t-phat-546614745-17915456.jpg" alt="" class="w-full h-full object-cover mr-2 rounded-lg -rotate-5  hover:-rotate-0 hover:scale-105 transition-all duration-300">
+        </div>
 
-        <button id="next" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 rounded-full z-10 opacity-80 hover:opacity-100">
-            ❯
-        </button>
+        <div class="h-120 w-80 ">
+            <img src="../assets/pexels-simon-kan-56314180-11534647.jpg" alt="" class="w-full h-full object-cover ml-2 rounded-lg rotate-5  hover:rotate-0 hover:scale-105 transition-all duration-300">
+        </div>
 
+        <div class="h-120 w-80 ">
+            <img src="../assets/pexels-yankrukov-5478858.jpg" alt="" class="w-full h-full object-cover rounded-lg rotate-5  hover:rotate-0 hover:scale-105 transition-all duration-300">
+        </div>
     </div>
+
 
 </section>
 
 
 
-<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-130  justify-center lg:items-center bg-gray-100">
+<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-130  justify-center lg:items-center bg-gray-100 gap-10 ">
 
 
 
@@ -226,5 +225,4 @@ include_once 'header.php';
         index = (index - 1 + total) % total;
         carousel.style.transform = `translateX(-${index * 100}%)`;
     };
-
 </script>

@@ -55,7 +55,7 @@ include_once '../../app/config/constantes.php';
 
             <div class="md:w-1/2 flex flex-col items-center justify-center p-12 bg-white">
                 <div class="w-full max-w-md text-center">
-                    <h2 class="text-4xl font-bold text-green-700 mb-2">Registro</h2>
+                    <h2 class="text-4xl font-bold bg-gradient-to-l from-green-500 to-green-800 bg-clip-text text-transparent mb-2">Registro</h2>
                     <p class="text-gray-500 mb-10 text-lg">Unete a nosotros!!</p>
 
                     <form action="#" method="post" class="space-y-6 w-full">
@@ -85,7 +85,7 @@ include_once '../../app/config/constantes.php';
 
                         <button
                             type="submit"
-                            class="w-full py-4 bg-gradient-to-r from-yellow-300 to-green-700 text-white font-bold rounded-2xl
+                            class="w-full py-4 bg-gradient-to-l from-green-500 to-green-800 text-white font-bold rounded-2xl
                                hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-lg shadow-green-700/30 text-lg mt-4 cursor-pointer">
                             Registrarse
                         </button>
@@ -98,8 +98,8 @@ include_once '../../app/config/constantes.php';
                 </div>
             </div>
 
-            <div class="md:w-1/2  flex items-center justify-center ">
-                <img src="../assets/detail-rice-plant-sunset-valencia-with-plantation-out-focus-rice-grains-plant-seed.jpg" alt="Registro Ilustración" class="w-full h-full object-cover">
+            <div class="md:w-1/2  flex items-center justify-center bg-gradient-to-l from-green-500 to-green-800">
+                <img src="../assets/hoja.png" alt="Registro Ilustración" class="w-40 h-40">
             </div>
 
         </div>
