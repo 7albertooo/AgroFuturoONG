@@ -70,6 +70,9 @@
                         <li>
                             <a class="text-gray-600 font-medium hover:text-green-700 active:text-green-700 transition-colors" href="#">Apoyar</a>
                         </li>
+                        <li>
+                            <a class="text-gray-600 font-medium hover:text-green-700 active:text-green-700 transition-colors" href="contacto.php">Contacto</a>
+                        </li>
                     </ul>
                 </div>
 
