@@ -42,7 +42,7 @@ include_once '../../app/config/constantes.php';
 
 <body class="bg-gray-50 relative overflow-x-hidden suse-mono-regular justify-center items-center animate-fadeIn">
 
-    <a href="index.php"
+    <a href="login.php"
         class="fixed top-6 left-6 flex items-center gap-2 text-gray-600 hover:text-green-700 transition font-medium z-50">
         ← Volver atrás
     </a>
