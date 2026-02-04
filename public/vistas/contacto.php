@@ -1,6 +1,5 @@
 <?php
 
-include_once '../../app/config/constantes.php';
 include_once 'header.php';
 
 
@@ -18,21 +17,21 @@ include_once 'header.php';
         </div>
         <div class="col-start-1 row-start-4 p-5 border border-gray-300 shadow-lg rounded-lg  justify-start items-start flex flex-col hover:scale-103 transition-transform">
 
-            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text ">Horario de atención</h3>
-            <p class="text-sm text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
-            <p class="text-sm text-gray-600">Sábados: 10:00 - 14:00</p>
-            <p class="text-sm text-gray-600">Domingos: Cerrado</p>
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text "><?php echo $textos['contacto']['info']['horario']; ?></h3>
+            <p class="text-sm text-gray-600"><?php echo $textos['contacto']['datos']['h_dias']; ?></p>
+            <p class="text-sm text-gray-600"><?php echo $textos['contacto']['datos']['h_sab']; ?></p>
+            <p class="text-sm text-gray-600"><?php echo $textos['contacto']['datos']['h_dom']; ?></p>
         </div>
         <div class="col-start-2 row-start-4 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-103 transition-transform">
-            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1">Telefono</h3>
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1"><?php echo $textos['contacto']['info']['tel']; ?></h3>
             <p class="text-sm text-gray-600">Teléfono: +34 123 456 789</p>
         </div>
         <div class="col-start-1 row-start-5 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-103 transition-transform">
-            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1">Dirección</h3>
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1"><?php echo $textos['contacto']['info']['dir']; ?></h3>
             <p class="text-sm text-gray-600">Av de la Arboleda, s/n, Av. Arboleda, 21440 Lepe, Huelva</p>
         </div>
         <div class="col-start-2 row-start-5 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-103 transition-transform">
-            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-2">Redes Sociales</h3>
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-2"><?php echo $textos['contacto']['info']['redes']; ?></h3>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-body sm:mb-0 md:mr-20 gap-10">
                 <li class="w-6 h-6 hover:scale-105 transition-all duration-300">
                     <a href="#">
@@ -79,45 +78,45 @@ include_once 'header.php';
 
         <div class="col-span-2 row-span-5 col-start-3 row-start-1 p-5 border border-gray-300 shadow-lg rounded-lg flex flex-col items-center justify-center hover:scale-103 transition-transform ">
             <h2 class="text-2xl font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-6">
-                Contáctanos
+                <?php echo $textos['contacto']['titulo']; ?>
             </h2>
 
             <form action="enviar.php" method="POST" class="space-y-5 w-full max-w-md">
 
                 <div>
-                    <label class="block text-sm text-gray-600 mb-1">Nombre</label>
+                    <label class="block text-sm text-gray-600 mb-1"><?php echo $textos['contacto']['form']['nombre']; ?></label>
                     <input
                         type="text"
                         name="nombre"
                         required
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-1 focus:ring-green-700 focus:border-green-700 outline-none"
-                        placeholder="Tu nombre">
+                        placeholder="<?php echo $textos['contacto']['placeholders']['nombre']; ?>">
                 </div>
 
                 <div>
-                    <label class="block text-sm text-gray-600 mb-1">Correo electrónico</label>
+                    <label class="block text-sm text-gray-600 mb-1"><?php echo $textos['contacto']['form']['email']; ?></label>
                     <input
                         type="email"
                         name="email"
                         required
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-1 focus:ring-green-700 focus:border-green-700 outline-none"
-                        placeholder="tucorreo@email.com">
+                        placeholder="<?php echo $textos['contacto']['placeholders']['email']; ?>">
                 </div>
 
                 <div>
-                    <label class="block text-sm text-gray-600 mb-1">Mensaje</label>
+                    <label class="block text-sm text-gray-600 mb-1"><?php echo $textos['contacto']['form']['msj']; ?></label>
                     <textarea
                         name="mensaje"
                         rows="4"
                         required
                         class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-1 focus:ring-green-700 focus:border-green-700 outline-none"
-                        placeholder="Escribe tu mensaje aquí..."></textarea>
+                        placeholder="<?php echo $textos['contacto']['placeholders']['msj']; ?>"></textarea>
                 </div>
 
                 <button
                     type="submit"
                     class="w-full bg-gradient-to-l from-green-500 to-green-800 hover:bg-gradient-to-l hover:from-green-600 hover:to-green-900 text-white font-medium py-3 rounded-lg transition">
-                    Enviar mensaje
+                    <?php echo $textos['contacto']['form']['btn']; ?>
                 </button>
 
             </form>
