@@ -93,7 +93,8 @@ git push -u origin tu-rama
 Cada vez que entres en el proyecto en VSCODE ejecuta:
 
 ```bash
-git pull
+git checkout feature
+git pull origin main
 ```
 Y arranca el servidor de XAMPP.
 
