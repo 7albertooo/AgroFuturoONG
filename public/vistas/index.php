@@ -1,6 +1,6 @@
 <?php
 //Incluimos el archivo de constantes
-include_once '../../app/config/constantes.php';
+include_once '../../app/config/textos.php';
 
 //Incluimos el header
 include_once 'header.php';

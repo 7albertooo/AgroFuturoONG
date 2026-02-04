@@ -1,5 +1,5 @@
 <?php
-include_once '../../app/config/constantes.php';
+include_once '../../app/config/textos.php';
 ?>
 
 <!DOCTYPE html>

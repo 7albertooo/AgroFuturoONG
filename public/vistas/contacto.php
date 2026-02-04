@@ -1,6 +1,6 @@
 <?php
 
-include_once '../../app/config/constantes.php';
+include_once '../../app/config/textos.php';
 include_once 'header.php';
 
 
