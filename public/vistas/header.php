@@ -62,7 +62,7 @@ $idioma_siguiente = ($idioma === 'es') ? 'en' : 'es';
                 <div class="hidden lg:flex justify-center">
                     <ul class="flex space-x-8">
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="index.php"><?php echo $textos['nav']['inicio']; ?></a></li>
-                        <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="#"><?php echo $textos['nav']['ayuda']; ?></a></li>
+                        <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="ayuda.php"><?php echo $textos['nav']['ayuda']; ?></a></li>
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="#"><?php echo $textos['nav']['apoyar']; ?></a></li>
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="contacto.php"><?php echo $textos['nav']['contacto']; ?></a></li>
                     </ul>
