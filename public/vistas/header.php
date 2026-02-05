@@ -85,7 +85,7 @@ $idioma_siguiente = ($idioma === 'es') ? 'en' : 'es';
             <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 w-screen h-screen flex-col justify-center items-center text-center bg-white z-50">
                 <ul class="flex flex-col space-y-4">
                     <li><a class="text-gray-800 font-medium hover:text-green-700 block px-4 py-2" href="index.php"><?php echo $textos['nav']['inicio']; ?></a></li>
-                    <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="#"><?php echo $textos['nav']['ayuda']; ?></a></li>
+                    <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="ayuda.php"><?php echo $textos['nav']['ayuda']; ?></a></li>
                     <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="#"><?php echo $textos['nav']['apoyar']; ?></a></li>
                     <li class="pt-2">
                         <a href="login.php" class="w-full px-6 py-2 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300"><?php echo $textos['nav']['login']; ?></a>
