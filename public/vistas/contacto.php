@@ -1,38 +1,49 @@
-<?php
+<?php include_once 'header.php'; ?>
 
-include_once 'header.php';
+<section class="w-full mx-auto p-4 md:p-10 flex flex-col items-center justify-center min-h-screen">
 
-
-?>
-
-
-<section class="w-full mx-auto p-10 flex flex-col items-center lg:min-h-150  justify-center">
-
-
-
-
-    <div class="grid grid-cols-5 grid-rows-5 gap-4 w-full h-170 ml-100 mt-10">
-        <div class="col-span-2 row-span-3 p-5 border border-gray-300 shadow-lg rounded-lg flex flex-col items-center hover:scale-103 transition-transform ">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3175.529966501865!2d-7.210022200000002!3d37.2588581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1031c52bfcf10d%3A0x3d3cdb74ee712c96!2sIES%20La%20Arboleda!5e0!3m2!1ses!2ses!4v1770045220330!5m2!1ses!2ses" width="690" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="grid grid-cols-1 lg:grid-cols-5 lg:grid-rows-5 gap-4 w-full max-w-7xl">
+        
+        <div class="lg:col-span-2 lg:row-span-3 p-2 md:p-5 border border-gray-300 shadow-lg rounded-lg flex flex-col items-center hover:scale-[1.02] transition-transform overflow-hidden">
+            <div class="w-full h-full min-h-[300px]">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3175.529966501865!2d-7.210022200000002!3d37.2588581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1031c52bfcf10d%3A0x3d3cdb74ee712c96!2sIES%20La%20Arboleda!5e0!3m2!1ses!2ses!4v1770045220330!5m2!1ses!2ses" 
+                    class="w-full h-full border-0" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
         </div>
-        <div class="col-start-1 row-start-4 p-5 border border-gray-300 shadow-lg rounded-lg  justify-start items-start flex flex-col hover:scale-103 transition-transform">
 
-            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text "><?php echo $textos['contacto']['info']['horario']; ?></h3>
+        <div class="lg:col-start-1 lg:row-start-4 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-[1.02] transition-transform">
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text">
+                <?php echo $textos['contacto']['info']['horario']; ?>
+            </h3>
             <p class="text-sm text-gray-600"><?php echo $textos['contacto']['datos']['h_dias']; ?></p>
             <p class="text-sm text-gray-600"><?php echo $textos['contacto']['datos']['h_sab']; ?></p>
             <p class="text-sm text-gray-600"><?php echo $textos['contacto']['datos']['h_dom']; ?></p>
         </div>
-        <div class="col-start-2 row-start-4 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-103 transition-transform">
-            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1"><?php echo $textos['contacto']['info']['tel']; ?></h3>
+
+        <div class="lg:col-start-2 lg:row-start-4 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-[1.02] transition-transform">
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1">
+                <?php echo $textos['contacto']['info']['tel']; ?>
+            </h3>
             <p class="text-sm text-gray-600">Teléfono: +34 123 456 789</p>
         </div>
-        <div class="col-start-1 row-start-5 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-103 transition-transform">
-            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1"><?php echo $textos['contacto']['info']['dir']; ?></h3>
-            <p class="text-sm text-gray-600">Av de la Arboleda, s/n, Av. Arboleda, 21440 Lepe, Huelva</p>
+
+        <div class="lg:col-start-1 lg:row-start-5 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-[1.02] transition-transform">
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1">
+                <?php echo $textos['contacto']['info']['dir']; ?>
+            </h3>
+            <p class="text-sm text-gray-600 text-pretty">Av de la Arboleda, s/n, 21440 Lepe, Huelva</p>
         </div>
-        <div class="col-start-2 row-start-5 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-103 transition-transform">
-            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-2"><?php echo $textos['contacto']['info']['redes']; ?></h3>
-            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-body sm:mb-0 md:mr-20 gap-10">
+
+        <div class="lg:col-start-2 lg:row-start-5 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-[1.02] transition-transform">
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-2">
+                <?php echo $textos['contacto']['info']['redes']; ?>
+            </h3>
+            <ul class="flex flex-wrap items-center gap-4">
                 <li class="w-6 h-6 hover:scale-105 transition-all duration-300">
                     <a href="#">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,60 +82,35 @@ include_once 'header.php';
                         </svg>
                     </a>
                 </li>
-
-            </ul>
+                </ul>
         </div>
 
-
-        <div class="col-span-2 row-span-5 col-start-3 row-start-1 p-5 border border-gray-300 shadow-lg rounded-lg flex flex-col items-center justify-center hover:scale-103 transition-transform ">
-            <h2 class="text-2xl font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-6">
+        <div class="lg:col-span-3 lg:row-span-5 lg:col-start-3 lg:row-start-1 p-6 md:p-10 border border-gray-300 shadow-lg rounded-lg flex flex-col items-center justify-center hover:scale-[1.01] transition-transform bg-white">
+            <h2 class="text-2xl md:text-3xl font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-6 text-center">
                 <?php echo $textos['contacto']['titulo']; ?>
             </h2>
 
-            <form action="enviar.php" method="POST" class="space-y-5 w-full max-w-md">
-
+            <form action="enviar.php" method="POST" class="space-y-4 w-full max-w-md">
                 <div>
                     <label class="block text-sm text-gray-600 mb-1"><?php echo $textos['contacto']['form']['nombre']; ?></label>
-                    <input
-                        type="text"
-                        name="nombre"
-                        required
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-1 focus:ring-green-700 focus:border-green-700 outline-none"
-                        placeholder="<?php echo $textos['contacto']['placeholders']['nombre']; ?>">
+                    <input type="text" name="nombre" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none transition-all" placeholder="<?php echo $textos['contacto']['placeholders']['nombre']; ?>">
                 </div>
 
                 <div>
                     <label class="block text-sm text-gray-600 mb-1"><?php echo $textos['contacto']['form']['email']; ?></label>
-                    <input
-                        type="email"
-                        name="email"
-                        required
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-1 focus:ring-green-700 focus:border-green-700 outline-none"
-                        placeholder="<?php echo $textos['contacto']['placeholders']['email']; ?>">
+                    <input type="email" name="email" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none transition-all" placeholder="<?php echo $textos['contacto']['placeholders']['email']; ?>">
                 </div>
 
                 <div>
                     <label class="block text-sm text-gray-600 mb-1"><?php echo $textos['contacto']['form']['msj']; ?></label>
-                    <textarea
-                        name="mensaje"
-                        rows="4"
-                        required
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-1 focus:ring-green-700 focus:border-green-700 outline-none"
-                        placeholder="<?php echo $textos['contacto']['placeholders']['msj']; ?>"></textarea>
+                    <textarea name="mensaje" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none transition-all" placeholder="<?php echo $textos['contacto']['placeholders']['msj']; ?>"></textarea>
                 </div>
 
-                <button
-                    type="submit"
-                    class="w-full bg-gradient-to-l from-green-500 to-green-800 hover:bg-gradient-to-l hover:from-green-600 hover:to-green-900 text-white font-medium py-3 rounded-lg transition">
+                <button type="submit" class="w-full bg-gradient-to-l from-green-500 to-green-800 hover:from-green-600 hover:to-green-900 text-white font-bold py-3 rounded-lg shadow-md transition-all active:scale-95">
                     <?php echo $textos['contacto']['form']['btn']; ?>
                 </button>
-
             </form>
         </div>
+
     </div>
-
-
-
-
-
 </section>
