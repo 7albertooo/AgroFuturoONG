@@ -3,10 +3,10 @@
 $env = parse_ini_file(__DIR__ . '/../../.env');
 
 //Declaramos las variables de conexión
-$host = $env['DB_HOST'];
-$db_name = $env['DB_NAME'];
-$user = $env['DB_USER'];
-$password = $env['DB_PASS'];
+$host = 'localhost';
+$db_name = 'agrofuturo';
+$user = 'root';
+$password = '';
 
         
     $conexion = mysqli_connect($host, $user, $password, $db_name);
