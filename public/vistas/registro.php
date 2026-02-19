@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+$mensaje = $_SESSION['mensaje'] ?? '';
+unset ($_SESSION['mensaje']);
+
+$errores = $_SESSION['errores'] ?? '';
+unset ($_SESSION['errores']);
+
 $idioma = $_COOKIE['idioma'] ?? 'es';
 include_once '../../app/config/textos.php';
 ?>
@@ -59,10 +67,11 @@ include_once '../../app/config/textos.php';
                     <h2 class="text-4xl font-bold bg-gradient-to-l from-green-500 to-green-800 bg-clip-text text-transparent mb-2"><?php echo $textos['auth']['reg_t']; ?></h2>
                     <p class="text-gray-500 mb-10 text-lg"><?php echo $textos['auth']['reg_sub']; ?></p>
 
-                    <form action="#" method="post" class="space-y-6 w-full">
+                    <form action="../../app/controladores/registroControlador.php" method="post" class="space-y-6 w-full">
                         <div class="relative">
                             <input
                                 type="text"
+                                name="username"
                                 placeholder="<?php echo $textos['auth']['inputs']['user']; ?>"
                                 class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
                                 required>
@@ -71,6 +80,7 @@ include_once '../../app/config/textos.php';
                         <div class="relative">
                             <input
                                 type="email"
+                                name="email"
                                 placeholder="<?php echo $textos['auth']['inputs']['email']; ?>"
                                 class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
                                 required>
@@ -79,6 +89,7 @@ include_once '../../app/config/textos.php';
                         <div class="relative">
                             <input
                                 type="password"
+                                name="password"
                                 placeholder="<?php echo $textos['auth']['inputs']['pass']; ?>"
                                 class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
                                 required>
@@ -94,6 +105,19 @@ include_once '../../app/config/textos.php';
                         <div class="mt-4 text-center max-w-80 mx-auto">
                             <p><?php echo $textos['auth']['preguntas']['si_cuenta']; ?> <a href="login.php" class="text-green-700 hover:text-green-800"><?php echo $textos['auth']['enlaces']['log']; ?></a></p>
                         </div>
+
+                        <?php if (!empty($errores)) :?>
+
+                            <?php foreach ($errores as $error) :?>
+                            <p style="color:red"><?= $error ?> </p>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php if (!empty($mensaje)) :?>
+
+                            <p style="color:green"><?= $mensaje ?> </p>
+                            
+                        <?php endif; ?>
 
                     </form>
                 </div>
