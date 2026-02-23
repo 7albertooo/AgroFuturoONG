@@ -1,7 +1,5 @@
 <?php
 
-$env = parse_ini_file(__DIR__ . '/../../.env');
-
 //Declaramos las variables de conexión
 $host = 'localhost';
 $db_name = 'agrofuturo';

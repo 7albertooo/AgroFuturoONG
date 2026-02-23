@@ -3,6 +3,7 @@
 session_start();
 
 include_once 'header.php';
+include_once '../../app/funciones/datosAdmin.php';
 ?>
 
 
@@ -20,7 +21,7 @@ include_once 'header.php';
         <div class="flex items-center justify-between rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md">
             <div class="flex flex-col gap-1">
                 <h2 class="text-sm font-medium text-gray-400">Total Usuarios</h2>
-                <p class="text-4xl font-bold text-gray-800">10</p>
+                <p class="text-4xl font-bold text-gray-800"><?= $datosCountUsers ?></p>
 
             </div>
             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
@@ -32,8 +33,8 @@ include_once 'header.php';
 
         <div class="flex items-center justify-between rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md">
             <div class="flex flex-col gap-1 text-left">
-                <h2 class="text-sm font-medium text-gray-400">Solicitudes Pendientes</h2>
-                <p class="text-4xl font-bold text-gray-800">8</p>
+                <h2 class="text-sm font-medium text-gray-400">Total Solicitudes</h2>
+                <p class="text-4xl font-bold text-gray-800"><?= $datosCountSoli ?></p>
 
             </div>
             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
@@ -45,8 +46,8 @@ include_once 'header.php';
 
         <div class="flex items-center justify-between rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md">
             <div class="flex flex-col gap-1 text-left">
-                <h2 class="text-sm font-medium text-gray-400">En Formación</h2>
-                <p class="text-4xl font-bold text-gray-800">15</p>
+                <h2 class="text-sm font-medium text-gray-400">Solicitudes Pendientes</h2>
+                <p class="text-4xl font-bold text-gray-800"><?= $datoSoliPendiente ?></p>
 
             </div>
             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
@@ -60,7 +61,7 @@ include_once 'header.php';
         <div class="flex items-center justify-between rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md">
             <div class="flex flex-col gap-1 text-left">
                 <h2 class="text-sm font-medium text-gray-400">Subvenciones Otorgadas</h2>
-                <p class="text-4xl font-bold text-gray-800">23</p>
+                <p class="text-4xl font-bold text-gray-800"><?= $datosCountSubven ?></p>
 
             </div>
             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
@@ -71,6 +72,7 @@ include_once 'header.php';
         </div>
 
     </div>
+
 
     <div class="w-9/10 mx-auto p-4 mb-6 flex justify-center lg:justify-start">
         <ul class="w-full max-w-md bg-gray-200 rounded-xl flex flex-row justify-around items-center px-4 py-2 text-gray-600 gap-1">
@@ -103,23 +105,22 @@ include_once 'header.php';
                 <tr>
                     <th class="px-4 py-3">Usuario</th>
                     <th class="px-4 py-3">Email</th>
-                    <th class="px-4 py-3">Estado</th>
+                    <th class="px-4 py-3">Fecha Registro</th>
                     <th class="px-4 py-3 text-right">Rol</th>
                     <th class="px-4 py-3 text-right">Acciones</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
+                <?php foreach ($datosUsers as $user) :?>
                 <tr class="hover:bg-gray-50 transition-colors">
                     <td class="px-4 py-4">
-                        <div class="font-semibold text-gray-900">7alberto</div>
+                        <div class="font-semibold text-gray-900"><?= $user['username'] ?></div>
                     </td>
-                    <td class="px-4 py-4 text-gray-600">alberto@example.com</td>
-                    <td class="px-4 py-4">
-                        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                            Activo
-                        </span>
-                    </td>
-                    <td class="px-4 py-4 text-right font-bold text-gray-900">Admin</td>
+                    <td class="px-4 py-4 text-gray-600"><?= $user['email'] ?></td>
+
+                    <td class="px-4 py-4 text-gray-600"> <?= $user['fecha_registro'] ?></td>
+
+                    <td class="px-4 py-4 text-right font-bold text-gray-900"><?= $user['rol'] ?></td>
 
                     <td class="px-4 py-4">
                         <div class="flex justify-end gap-3">
@@ -137,6 +138,7 @@ include_once 'header.php';
                         </div>
                     </td>
                 </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -149,25 +151,26 @@ include_once 'header.php';
                     <th class="px-4 py-3">Solicitud</th>
                     <th class="px-4 py-3">Solicitante</th>
                     <th class="px-4 py-3">Estado</th>
-                    <th class="px-4 py-3 text-right">Monto</th>
-                    <th class="px-4 py-3 text-right">Fecha</th>
+                    <th class="px-4 py-3 text-right">Fecha Envio</th>
+                    <th class="px-4 py-3 text-right">Fecha Resolucion</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
+                <?php foreach ($datoSoli as $soli) :?>
                 <tr class="hover:bg-gray-50 transition-colors">
                     <td class="px-4 py-4">
-                        <div class="font-semibold text-gray-900">Ayuda para cultivo de olivos</div>
-                        <div class="text-xs text-gray-500 truncate w-64">Solicitud de ayuda para expandir...</div>
+                        <div class="font-semibold text-gray-900"><?= $soli['id'] ?></div>
                     </td>
-                    <td class="px-4 py-4 text-gray-600">María García</td>
+                    <td class="px-4 py-4 text-gray-600"><?= $soli['id_usuario'] ?></td>
                     <td class="px-4 py-4">
                         <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                            Pendiente
+                            <?= $soli['estado'] ?>
                         </span>
                     </td>
-                    <td class="px-4 py-4 text-right font-bold text-gray-900">5000 €</td>
-                    <td class="px-4 py-4 text-right text-gray-500">15/2/2026</td>
+                    <td class="px-4 py-4 text-right font-bold text-gray-900"><?= $soli['fecha_envio'] ?></td>
+                    <td class="px-4 py-4 text-right text-gray-500"><?= $soli['fecha_resolucion'] ?></td>
                 </tr>
+                <?php endforeach; ?>
 
             </tbody>
 
