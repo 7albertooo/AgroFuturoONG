@@ -1,4 +1,13 @@
 <?php
+//Iniciamos sesion
+session_start();
+
+$mensajeError = $_SESSION["mensaje"] ?? null;
+
+if(isset($_SESSION["mensaje"])) {
+    unset($_SESSION["mensaje"]);
+}
+
 $idioma = $_COOKIE['idioma'] ?? 'es';
 include_once '../../app/config/textos.php';
 ?>
@@ -42,7 +51,6 @@ include_once '../../app/config/textos.php';
 </head>
 
 <body class="bg-gray-50 relative overflow-x-hidden suse-mono-regular justify-center items-center animate-fadeIn">
-<form action="../controlador/loginControlador" method="post">
 
     <a href="index.php"
         class="fixed top-6 left-6 flex items-center gap-2 text-gray-600 hover:text-green-700 transition font-medium z-50">
@@ -65,7 +73,7 @@ include_once '../../app/config/textos.php';
                     <h2 class="text-4xl font-bold bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent mb-2"><?php echo $textos['auth']['login_t']; ?></h2>
                     <p class="text-gray-500 mb-10 text-lg"><?php echo $textos['auth']['login_sub']; ?></p>
 
-                    <form action="../../app/controladores/loginControlador.php" method="post" class="space-y-6 w-full">
+                    <form action="../../app/controladores/loginControlador.php" method="POST" class="space-y-6 w-full">
                         <div class="relative">
                             <input
                                 type="text"
@@ -75,7 +83,7 @@ include_once '../../app/config/textos.php';
                                 required>
                         </div>
 
-                        <div class="relative">
+                        <div class="relative">0
                             <input
                                 type="password"
                                 name="password"
@@ -83,6 +91,10 @@ include_once '../../app/config/textos.php';
                                 class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
                                 required>
                         </div>
+
+                        <?php if (isset($mensajeError)):?>
+                            <p class="text-red-600 font-semibold"><?= $mensajeError; ?></p>
+                        <?php endif; ?>
 
                         <button
                             type="submit"
@@ -101,5 +113,4 @@ include_once '../../app/config/textos.php';
             </div>
         </div>
     </section>
- </form>
 </body>

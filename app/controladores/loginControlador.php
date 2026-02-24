@@ -19,11 +19,11 @@ if(isset($_POST["login"])){
     $passwordIngresado=sanear($_POST["password"]);
 
     //Validamos los datos del nombre
-    $nombreIngresado=validarnombre($nombreIngresado);
+   /*  $nombreIngresado=validarnombre($nombreIngresado); */
 
 
     //Validamos los datos de la contraseña
-    $passwordIngresado=validarpassword($passwordIngresado);
+    /* $passwordIngresado=validarpassword($passwordIngresado); */
 
 
     //Si existen errores los recogemos en una sesión
@@ -35,7 +35,7 @@ if(isset($_POST["login"])){
 
     }else{
         //Cogemos el array con los datos del registro
-        $usuario=include("datos.php");
+        $usuario=$_SESSION["datos"];
 
         $encontrado=false;
 
@@ -55,10 +55,13 @@ if(isset($_POST["login"])){
         }
 
     if($encontrado){
-        echo "Nombre y contraseña son correctos.Bienvenido";
+        $_SESSION["mensaje"] = "Nombre y contraseña son correctos.Bienvenido";
     }else{
-        echo "Nombre o contraseña son incorrectos";
+        $_SESSION["mensaje"] = "Error datos no coinciden";
     } 
     }
 }
+
+header("Location: ../../public/vistas/login.php");
+exit;
 ?>
