@@ -1,4 +1,13 @@
 <?php
+//Iniciamos sesion
+session_start();
+
+$mensajeError = $_SESSION["mensaje"] ?? null;
+
+if(isset($_SESSION["mensaje"])) {
+    unset($_SESSION["mensaje"]);
+}
+
 $idioma = $_COOKIE['idioma'] ?? 'es';
 include_once '../../app/config/textos.php';
 ?>
@@ -64,25 +73,32 @@ include_once '../../app/config/textos.php';
                     <h2 class="text-4xl font-bold bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent mb-2"><?php echo $textos['auth']['login_t']; ?></h2>
                     <p class="text-gray-500 mb-10 text-lg"><?php echo $textos['auth']['login_sub']; ?></p>
 
-                    <form action="#" method="post" class="space-y-6 w-full">
+                    <form action="../../app/controladores/loginControlador.php" method="POST" class="space-y-6 w-full">
                         <div class="relative">
                             <input
                                 type="text"
+                                name="username"
                                 placeholder="<?php echo $textos['auth']['inputs']['user']; ?>"
                                 class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
                                 required>
                         </div>
 
-                        <div class="relative">
+                        <div class="relative">0
                             <input
                                 type="password"
+                                name="password"
                                 placeholder="<?php echo $textos['auth']['inputs']['pass']; ?>"
                                 class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
                                 required>
                         </div>
 
+                        <?php if (isset($mensajeError)):?>
+                            <p class="text-red-600 font-semibold"><?= $mensajeError; ?></p>
+                        <?php endif; ?>
+
                         <button
                             type="submit"
+                            name="login"
                             class="w-full py-4 bg-gradient-to-r from-green-500 to-green-800 text-white font-bold rounded-2xl
                                hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-lg shadow-green-700/30 text-lg mt-4 cursor-pointer">
                             <?php echo $textos['auth']['btns']['entrar']; ?>
@@ -97,5 +113,4 @@ include_once '../../app/config/textos.php';
             </div>
         </div>
     </section>
-
 </body>

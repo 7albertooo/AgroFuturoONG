@@ -15,9 +15,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         'password' => $_POST['password'] ?? ''
     ];
 
-
     $errores = validarDatos($datos);
-
 
     if(!empty($errores)) {
 
