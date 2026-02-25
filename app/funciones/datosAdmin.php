@@ -63,8 +63,9 @@ $totalPaginasSoli = ceil($datosCountSoli / $soliPorPagina);
 
 /* Solicitudes PAGINADAS */
 $sqlSoli = "
-    SELECT *
-    FROM solicitud
+    SELECT s.*, u.username as nombreUser
+    FROM solicitud s
+    INNER JOIN usuarios u ON u.id = s.id_usuario
     ORDER BY id DESC
     LIMIT $inicioSoli, $soliPorPagina
 ";
@@ -86,7 +87,7 @@ $datoSoliPendiente = mysqli_fetch_assoc($resulSoliPendiente)['totalSoliPendiente
 ========================== */
 
 
-$sqlCountSubven = "SELECT COUNT(*) AS totalSubven FROM solicitud";
+$sqlCountSubven = "SELECT COUNT(*) AS totalSubven FROM credito";
 $resulCountSubven = mysqli_query($conexion, $sqlCountSubven);
 $datosCountSubven = mysqli_fetch_assoc($resulCountSubven)['totalSubven'] ;
 

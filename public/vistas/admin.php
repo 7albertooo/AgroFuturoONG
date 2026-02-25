@@ -4,6 +4,8 @@ session_start();
 
 include_once 'header.php';
 include_once '../../app/funciones/datosAdmin.php';
+
+$mensajes = $_SESSION['mensaje'] ?? [];
 ?>
 
 
@@ -13,6 +15,17 @@ include_once '../../app/funciones/datosAdmin.php';
         <h1 class="font-bold text-3xl text-gray-800">PANEL DE ADMINISTRACIÓN</h1>
         <h3 class="text-gray-600">Gestiona solicitudes y usuarios</h3>
     </div>
+
+    <?php if (!empty($mensajes)): ?>
+        <div class="w-9/10 mx-auto mb-6">
+            <?php foreach ($mensajes as $mensaje): ?>
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
+                    <span class="block sm:inline"><?= $mensaje ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php unset($_SESSION['mensaje']); ?>
+    <?php endif; ?>
 
 
 
@@ -124,13 +137,13 @@ include_once '../../app/funciones/datosAdmin.php';
 
                         <td class="px-4 py-4">
                             <div class="flex justify-end gap-3">
-                                <button data-modal-target="edit-modal" data-modal-toggle="edit-modal" type="button" class="text-blue-600 hover:text-blue-900 transition-colors focus:outline-none" id="editar" title="Editar">
+                                <button data-modal-target="edit-modal-<?= $user['id'] ?>" data-modal-toggle="edit-modal-<?= $user['id'] ?>" type="button" class="text-green-600 hover:text-green-900 transition-colors focus:outline-none" id="editar" title="Editar">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
                                     </svg>
                                 </button>
 
-                                <button data-modal-target="delete-modal" data-modal-toggle="delete-modal" type="button" class="text-red-600 hover:text-red-900 transition-colors focus:outline-none" id="eliminar" title="Eliminar">
+                                <button data-modal-target="delete-modal-<?= $user['id'] ?>" data-modal-toggle="delete-modal-<?= $user['id'] ?>" type="button" class="text-red-600 hover:text-red-900 transition-colors focus:outline-none" id="eliminar" title="Eliminar">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                     </svg>
@@ -138,6 +151,95 @@ include_once '../../app/funciones/datosAdmin.php';
                             </div>
                         </td>
                     </tr>
+
+                    <div id="edit-modal-<?= $user['id'] ?>" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/50">
+                        <div class="relative p-4 w-full max-w-lg max-h-full">
+                            <div class="relative bg-white rounded-2xl shadow-lg border border-gray-100 p-5">
+                                <div class="flex items-center justify-between p-4 md:p-5 rounded-t">
+                                    <h3 class="text-xl font-semibold text-green-600">Editar Usuario</h3>
+                                    <svg fill="#028a09" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-3">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path d="M30.133 1.552c-1.090-1.044-2.291-1.573-3.574-1.573-2.006 0-3.47 1.296-3.87 1.693-0.564 0.558-19.786 19.788-19.786 19.788-0.126 0.126-0.217 0.284-0.264 0.456-0.433 1.602-2.605 8.71-2.627 8.782-0.112 0.364-0.012 0.761 0.256 1.029 0.193 0.192 0.45 0.295 0.713 0.295 0.104 0 0.208-0.016 0.31-0.049 0.073-0.024 7.41-2.395 8.618-2.756 0.159-0.048 0.305-0.134 0.423-0.251 0.763-0.754 18.691-18.483 19.881-19.712 1.231-1.268 1.843-2.59 1.819-3.925-0.025-1.319-0.664-2.589-1.901-3.776zM22.37 4.87c0.509 0.123 1.711 0.527 2.938 1.765 1.24 1.251 1.575 2.681 1.638 3.007-3.932 3.912-12.983 12.867-16.551 16.396-0.329-0.767-0.862-1.692-1.719-2.555-1.046-1.054-2.111-1.649-2.932-1.984 3.531-3.532 12.753-12.757 16.625-16.628zM4.387 23.186c0.55 0.146 1.691 0.57 2.854 1.742 0.896 0.904 1.319 1.9 1.509 2.508-1.39 0.447-4.434 1.497-6.367 2.121 0.573-1.886 1.541-4.822 2.004-6.371zM28.763 7.824c-0.041 0.042-0.109 0.11-0.19 0.192-0.316-0.814-0.87-1.86-1.831-2.828-0.981-0.989-1.976-1.572-2.773-1.917 0.068-0.067 0.12-0.12 0.141-0.14 0.114-0.113 1.153-1.106 2.447-1.106 0.745 0 1.477 0.34 2.175 1.010 0.828 0.795 1.256 1.579 1.27 2.331 0.014 0.768-0.404 1.595-1.24 2.458z"></path>
+                                        </g>
+                                    </svg>
+                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="edit-modal-<?= $user['id'] ?>">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <form class="p-4 md:p-5" action="../../app/controladores/adminC.php" method="POST">
+                                    <input type="hidden" name="accion" value="editarUser">
+                                    <input type="hidden" name="idUser" value="<?= $user['id'] ?>">
+                                    <div class="grid gap-4 mb-6 grid-cols-2">
+                                        <div class="col-span-2">
+                                            <label class="block mb-2 text-sm font-medium text-gray-700">Nombre de Usuario</label>
+                                            <input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="usuario10" required>
+                                        </div>
+                                        <div class="col-span-2">
+                                            <label class="block mb-2 text-sm font-medium text-gray-700">Correo Electrónico</label>
+                                            <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="usuario10@example.com" required>
+                                        </div>
+                                        <div class="col-span-1">
+                                            <label class="block mb-2 text-sm font-medium text-gray-700">Nueva Contraseña</label>
+                                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="••••••••">
+                                        </div>
+                                        <div class="col-span-1">
+                                            <label class="block mb-2 text-sm font-medium text-gray-700">Rol</label>
+                                            <select name="rol" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
+                                                <option value="admin" <?= $user['rol'] === 'admin' ? 'selected' : '' ?>>Admin</option>
+                                                <option value="user" <?= $user['rol'] === 'user' ? 'selected' : '' ?>>User</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-end gap-3 pt-4">
+                                        <button type="button" data-modal-hide="edit-modal-<?= $user['id'] ?>" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-full border border-gray-200 hover:bg-gray-100 transition-colors">Cancelar</button>
+                                        <button type="submit" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-emerald-300 font-medium rounded-full text-sm px-6 py-2.5 transition-colors">
+                                            Guardar cambios
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="delete-modal-<?= $user['id'] ?>" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/50">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-2xl shadow-lg p-6 text-center border border-gray-100">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="delete-modal-<?= $user['id'] ?>">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                </button>
+
+                                <div class="p-4 md:p-5">
+                                    <div class="mx-auto mb-4 text-red-500 bg-red-50 w-16 h-16 rounded-full flex items-center justify-center">
+                                        <svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="mb-5 text-lg font-normal text-gray-600">¿Estás seguro de que deseas eliminar este usuario?</h3>
+                                    <div class="flex items-center justify-center space-x-3">
+                                        <form action="../../app/controladores/adminC.php" method="POST">
+                                            <input type="hidden" name="accion" value="eliminarUser">
+                                            <input type="hidden" name="idUser" value="<?= $user['id'] ?>">
+                                            <button data-modal-hide="delete-modal-<?= $user['id'] ?>" type="submit" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 transition-colors">
+                                                Sí, eliminar
+                                            </button>
+                                        </form>
+
+                                        <button data-modal-hide="delete-modal-<?= $user['id'] ?>" type="button" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-emerald-600">
+                                            No, cancelar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
             </tbody>
         </table>
@@ -154,7 +256,7 @@ include_once '../../app/funciones/datosAdmin.php';
                 <a href="?pagina=<?= $i ?>"
                     class="px-3 py-1 rounded
            <?= $i == $pagina
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-green-500 text-white'
                     : 'bg-gray-200 hover:bg-gray-300' ?>">
                     <?= $i ?>
                 </a>
@@ -180,6 +282,7 @@ include_once '../../app/funciones/datosAdmin.php';
                     <th class="px-4 py-3">Estado</th>
                     <th class="px-4 py-3 text-right">Fecha Envio</th>
                     <th class="px-4 py-3 text-right">Fecha Resolucion</th>
+                    <th class="px-4 py-3 text-right">Acciones</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -188,7 +291,7 @@ include_once '../../app/funciones/datosAdmin.php';
                         <td class="px-4 py-4">
                             <div class="font-semibold text-gray-900"><?= $soli['id'] ?></div>
                         </td>
-                        <td class="px-4 py-4 text-gray-600"><?= $soli['id_usuario'] ?></td>
+                        <td class="px-4 py-4 text-gray-600"><?= $soli['nombreUser'] ?></td>
                         <td class="px-4 py-4">
                             <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                 <?= $soli['estado'] ?>
@@ -196,7 +299,101 @@ include_once '../../app/funciones/datosAdmin.php';
                         </td>
                         <td class="px-4 py-4 text-right font-bold text-gray-900"><?= $soli['fecha_envio'] ?></td>
                         <td class="px-4 py-4 text-right text-gray-500"><?= $soli['fecha_resolucion'] ?></td>
+                        <td class="px-4 py-4">
+                            <div class="flex justify-end gap-3">
+                                <button data-modal-target="aceptar-modal-<?= $soli['id'] ?>" data-modal-toggle="aceptar-modal-<?= $soli['id'] ?>" type="button" class="text-blue-600 hover:text-blue-900 transition-colors focus:outline-none" id="editar" title="Editar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </button>
+
+                                <button data-modal-target="denegar-modal-<?= $soli['id'] ?>" data-modal-toggle="denegar-modal-<?= $soli['id'] ?>" type="button" class="text-red-600 hover:text-red-900 transition-colors focus:outline-none" id="eliminar" title="Eliminar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
                     </tr>
+
+                    <div id="aceptar-modal-<?= $soli['id'] ?>" tabindex="-1" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 overflow-y-auto">
+                        <div class="relative w-full max-w-md p-4">
+                            <div class="bg-white rounded-2xl shadow-xl p-6 text-center border border-gray-100">
+
+                                <button type="button" class="absolute top-5 right-5 text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 flex items-center justify-center" data-modal-hide="aceptar-modal-<?= $soli['id'] ?>">
+                                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M1 1l12 12M13 1L1 13" />
+                                    </svg>
+                                </button>
+
+
+                                <div class="flex justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+
+
+                                <h3 class="mb-4 text-xl font-semibold text-gray-700">Aceptar Solicitud</h3>
+                                <p class="mb-5 text-gray-500 text-sm">Introduce el monto del crédito que deseas asignar a esta solicitud.</p>
+
+
+                                <form action="../../app/controladores/adminC.php" method="post" class="mb-4 flex flex-col gap-3">
+                                    <input type="hidden" name="accion" value="aceptarSoli">
+                                    <input type="hidden" name="idSoli" value="<?= $soli['id'] ?>">
+                                    <input type="number" name="cantidad" id="cantidad" placeholder="Monto del crédito" required
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:outline-none text-gray-700 mb-4">
+
+                                    <button type="submit" data-modal-hide="aceptar-modal-<?= $soli['id'] ?>"
+                                        class="w-full bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg py-2 transition-colors mb-2">
+                                        Aceptar Crédito
+                                    </button>
+                                </form>
+
+
+                                <button type="button" data-modal-hide="aceptar-modal-<?= $soli['id'] ?>"
+                                    class="w-full py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-green-600 transition-colors">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="denegar-modal-<?= $soli['id'] ?>" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/50">
+                        <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative bg-white rounded-2xl shadow-lg p-6 text-center border border-gray-100">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="denegar-modal-<?= $soli['id'] ?>">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                </button>
+
+                                <div class="p-4 md:p-5">
+                                    <div class="mx-auto mb-4 text-red-500 bg-red-50 w-16 h-16 rounded-full flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="18" y1="6" x2="6" y2="18" />
+                                            <line x1="6" y1="6" x2="18" y2="18" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="mb-5 text-lg font-normal text-gray-600">¿Estás seguro de que deseas rechazar esta solicitud?</h3>
+                                    <div class="flex items-center justify-center space-x-3">
+                                        <form action="../../app/controladores/adminC.php?" method="POST">
+                                            <input type="hidden" name="accion" value="denegarSoli">
+                                            <input type="hidden" name="idSoli" value="<?= $soli['id'] ?>">
+                                            <button data-modal-hide="denegar-modal-<?= $soli['id'] ?>" type="submit" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 transition-colors">
+                                                Sí, rechazar
+                                            </button>
+                                        </form>
+
+                                        <button data-modal-hide="denegar-modal-<?= $soli['id'] ?>" type="button" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-emerald-600">
+                                            No, cancelar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
 
             </tbody>
@@ -217,7 +414,7 @@ include_once '../../app/funciones/datosAdmin.php';
                 <a href="?paginaSoli=<?= $i ?>"
                     class="px-3 py-1 rounded
            <?= $i == $paginaSoli
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-green-500 text-white'
                     : 'bg-gray-200 hover:bg-gray-300' ?>">
                     <?= $i ?>
                 </a>
@@ -235,85 +432,6 @@ include_once '../../app/funciones/datosAdmin.php';
 
 
 
-
-
-    <div id="edit-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/50">
-        <div class="relative p-4 w-full max-w-lg max-h-full">
-            <div class="relative bg-white rounded-2xl shadow-lg border border-gray-100">
-                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                    <h3 class="text-xl font-semibold text-gray-800">Editar Usuario</h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="edit-modal">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
-                </div>
-
-                <form class="p-4 md:p-5">
-                    <div class="grid gap-4 mb-6 grid-cols-2">
-                        <div class="col-span-2">
-                            <label class="block mb-2 text-sm font-medium text-gray-700">Nombre de Usuario</label>
-                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="usuario10" required>
-                        </div>
-                        <div class="col-span-2">
-                            <label class="block mb-2 text-sm font-medium text-gray-700">Correo Electrónico</label>
-                            <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="usuario10@example.com" required>
-                        </div>
-                        <div class="col-span-1">
-                            <label class="block mb-2 text-sm font-medium text-gray-700">Nueva Contraseña</label>
-                            <input type="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="••••••••">
-                        </div>
-                        <div class="col-span-1">
-                            <label class="block mb-2 text-sm font-medium text-gray-700">Rol</label>
-                            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-end gap-3 border-t pt-4">
-                        <button type="button" data-modal-hide="edit-modal" class="py-2.5 px-5 text-sm font-medium text-gray-900 bg-white rounded-full border border-gray-200 hover:bg-gray-100 transition-colors">Cancelar</button>
-                        <button type="submit" class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-emerald-300 font-medium rounded-full text-sm px-6 py-2.5 transition-colors">
-                            Guardar cambios
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div id="delete-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/50">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-2xl shadow-lg p-6 text-center border border-gray-100">
-                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="delete-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                </button>
-
-                <div class="p-4 md:p-5">
-                    <div class="mx-auto mb-4 text-red-500 bg-red-50 w-16 h-16 rounded-full flex items-center justify-center">
-                        <svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                    </div>
-                    <h3 class="mb-5 text-lg font-normal text-gray-600">¿Estás seguro de que deseas eliminar este usuario?</h3>
-                    <div class="flex items-center justify-center space-x-3">
-                        <button data-modal-hide="delete-modal" type="button" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 transition-colors">
-                            Sí, eliminar
-                        </button>
-                        <button data-modal-hide="delete-modal" type="button" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-emerald-600">
-                            No, cancelar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
 </section>
 
 
@@ -324,13 +442,51 @@ include_once '../../app/funciones/datosAdmin.php';
     const tableUser = document.getElementById('tableuser');
     const tableSoli = document.getElementById('tablesoli');
 
-    const enlaceUser = document.getElementById('users').onclick = () => {
-        tableUser.classList.remove('hidden');
-        tableSoli.classList.add('hidden');
+    const linkUser = document.getElementById('users');
+    const linkSoli = document.getElementById('soli');
+
+    const updateLinkStyles = (activeId) => {
+        if (activeId === 'users') {
+            linkUser.classList.add('bg-white', 'text-green-600');
+            linkSoli.classList.remove('bg-white', 'text-green-600');
+        } else {
+            linkSoli.classList.add('bg-white', 'text-green-600');
+            linkUser.classList.remove('bg-white', 'text-green-600');
+        }
     }
 
-    const enlaceSoli = document.getElementById('soli').onclick = () => {
+    const showUsers = () => {
+        tableUser.classList.remove('hidden');
+        tableSoli.classList.add('hidden');
+        localStorage.setItem('activeTab', 'users');
+        updateLinkStyles('users');
+    }
+
+    const showSoli = () => {
         tableSoli.classList.remove('hidden');
         tableUser.classList.add('hidden');
+        localStorage.setItem('activeTab', 'soli');
+        updateLinkStyles('soli');
+    }
+
+    linkUser.onclick = (e) => {
+        e.preventDefault();
+        showUsers();
+    }
+
+    linkSoli.onclick = (e) => {
+        e.preventDefault();
+        showSoli();
+    }
+
+    // Persistencia al recargar
+    window.onload = () => {
+        const activeTab = localStorage.getItem('activeTab');
+
+        if (activeTab === 'soli') {
+            showSoli();
+        } else {
+            showUsers();
+        }
     }
 </script>
