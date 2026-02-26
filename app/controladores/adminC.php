@@ -79,6 +79,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit();
             }
             break;
+
+        case 'realizadoCredi':
+            $IDcredi = (int)$_POST['idCredi'];
+            $resultado = realizadoCredi($conexion, $IDcredi);
+            if ($resultado) {
+                $_SESSION['mensaje'][] = "Crédito marcado como realizado.";
+                header("Location: ../../public/vistas/admin.php");
+                exit();
+            } else {
+                $_SESSION['mensaje'][] = "Error al marcar el crédito como realizado.";
+                header("Location: ../../public/vistas/admin.php");
+                exit();
+            }
+            break;
     }
 }
 
