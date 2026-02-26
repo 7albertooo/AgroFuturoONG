@@ -131,3 +131,27 @@ function denegarSoli($con, $IDsoli)
 
     return $resultado;
 }
+
+
+function realizadoCredi($con, $IDcredi) {
+
+    $sql = "UPDATE credito
+          SET estado = 'realizado', fecha_envio = NOW()
+          WHERE id = ?
+    ";
+
+    $stmt = $con->prepare($sql);
+
+     if (!$stmt) {
+        die("Error en prepare UPDATE: " . $con->error);
+    }
+
+    $stmt->bind_param("i", $IDcredi);
+
+    $resultado = $stmt->execute();
+
+    $stmt->close();
+
+    return $resultado;
+
+}

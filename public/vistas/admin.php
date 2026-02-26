@@ -73,8 +73,8 @@ $mensajes = $_SESSION['mensaje'] ?? [];
 
         <div class="flex items-center justify-between rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md">
             <div class="flex flex-col gap-1 text-left">
-                <h2 class="text-sm font-medium text-gray-400">Subvenciones Otorgadas</h2>
-                <p class="text-4xl font-bold text-gray-800"><?= $datosCountSubven ?></p>
+                <h2 class="text-sm font-medium text-gray-400">Créditos Otorgados</h2>
+                <p class="text-4xl font-bold text-gray-800"><?= $datosCountCredi ?></p>
 
             </div>
             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
@@ -105,6 +105,16 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span class="font-medium">Solicitudes</span>
+                </a>
+            </li>
+
+            <li class="flex-1">
+                <a id="credi" href="#" class="flex items-center justify-center gap-2 p-1 rounded-lg transition-colors hover:bg-gray-300 focus:bg-white focus:text-green-600 outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l5-5c.94-.94.94-2.48 0-3.42L12 2Z" />
+                        <path d="M7 7h.01" />
+                    </svg>
+                    <span class="font-medium">Creditos</span>
                 </a>
             </li>
 
@@ -293,9 +303,24 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                         </td>
                         <td class="px-4 py-4 text-gray-600"><?= $soli['nombreUser'] ?></td>
                         <td class="px-4 py-4">
+                            <?php if($soli['estado'] == 'pendiente') :?>
                             <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                 <?= $soli['estado'] ?>
                             </span>
+                            <?php endif; ?>
+
+                            <?php if($soli['estado'] == 'aprobada') :?>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <?= $soli['estado'] ?>
+                            </span>
+                            <?php endif; ?>
+
+                            <?php if($soli['estado'] == 'rechazada') :?>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                <?= $soli['estado'] ?>
+                            </span>
+                            <?php endif; ?>
+
                         </td>
                         <td class="px-4 py-4 text-right font-bold text-gray-900"><?= $soli['fecha_envio'] ?></td>
                         <td class="px-4 py-4 text-right text-gray-500"><?= $soli['fecha_resolucion'] ?></td>
@@ -430,6 +455,134 @@ $mensajes = $_SESSION['mensaje'] ?? [];
         </div>
     </div>
 
+    <div class="w-9/10 overflow-x-auto bg-white p-6 rounded-lg shadow-sm hidden" id="tablecredi">
+        <table class="min-w-full divide-y divide-gray-200 text-left text-sm">
+
+            <thead class="text-gray-500 uppercase font-medium">
+                <tr>
+                    <th class="px-4 py-3">ID Credito</th>
+                    <th class="px-4 py-3">ID Solicitud</th>
+                    <th class="px-4 py-3">Solicitante</th>
+                    <th class="px-4 py-3">Cantidad</th>
+                    <th class="px-4 py-3">Fecha Envio</th>
+                    <th class="px-4 py-3">Estado</th>
+                    <th class="px-4 py-3 text-right">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <?php foreach ($datosCredi as $credi) : ?>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-4">
+                            <div class="font-semibold text-gray-900"><?= $credi['id'] ?></div>
+                        </td>
+                        <td class="px-4 py-4 text-gray-600"><?= $credi['id_solicitud'] ?></td>
+                        <td class="px-4 py-4 text-gray-600"><?= $credi['nombreUser'] ?></td>
+                        <td class="px-4 py-4 text-gray-600"><?= $credi['cantidad'] ?></td>
+                        <td class="px-4 py-4 font-bold text-gray-900"><?= $credi['fecha_envio'] ?></td>
+                        <?php if($credi['estado'] == 'pendiente') :?>
+                        <td class="px-4 py-4">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                <?= $credi['estado'] ?>
+                            </span>
+                        </td>
+                        <?php endif; ?>
+
+                        <?php if($credi['estado'] == 'realizado') :?>
+                        <td class="px-4 py-4">
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                <?= $credi['estado'] ?>
+                            </span>
+                        </td>
+                        <?php endif; ?>
+                        
+                        <td class="px-4 py-4">
+                            <div class="flex justify-end gap-3">
+                                <button data-modal-target="completo-modal-<?= $credi['id'] ?>" data-modal-toggle="completo-modal-<?= $credi['id'] ?>" type="button" class="text-blue-600 hover:text-blue-900 transition-colors focus:outline-none" id="editar" title="Editar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <div id="completo-modal-<?= $credi['id'] ?>" tabindex="-1" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 overflow-y-auto">
+                        <div class="relative w-full max-w-md p-4">
+                            <div class="bg-white rounded-2xl shadow-xl p-6 text-center border border-gray-100">
+
+                                <button type="button" class="absolute top-5 right-5 text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 flex items-center justify-center" data-modal-hide="completo-modal-<?= $credi['id'] ?>">
+                                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M1 1l12 12M13 1L1 13" />
+                                    </svg>
+                                </button>
+
+
+                                <div class="flex justify-center mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+
+
+                                <h3 class="mb-4 text-xl font-semibold text-gray-700">Marcar como completado</h3>
+                                <p class="mb-5 text-gray-500 text-sm">¿Estás seguro de que deseas marcar este crédito como completado?</p>
+
+
+                                <form action="../../app/controladores/adminC.php" method="post" class="mb-4 flex flex-col gap-3">
+                                    <input type="hidden" name="accion" value="realizadoCredi">
+                                    <input type="hidden" name="idCredi" value="<?= $credi['id'] ?>">
+
+                                   <button type="submit" data-modal-hide="completo-modal-<?= $credi['id'] ?>"
+                                        class="w-full bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg py-2 transition-colors mb-2">
+                                        Marcar como completado
+                                    </button>
+                                </form>
+
+
+                                <button type="button" data-modal-hide="completo-modal-<?= $credi['id'] ?>"
+                                    class="w-full py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-green-600 transition-colors">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endforeach; ?>
+
+            </tbody>
+
+
+        </table>
+
+        <div class="flex justify-end mt-6 gap-1">
+
+            <?php if ($paginaCredi > 1): ?>
+                <a href="?paginasCredi=<?= $paginaCredi - 1 ?>"
+                    class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">
+                    ←
+                </a>
+            <?php endif; ?>
+
+            <?php for ($i = 1; $i <= $totalPaginasCredi; $i++): ?>
+                <a href="?paginasCredi=<?= $i ?>"
+                    class="px-3 py-1 rounded
+           <?= $i == $paginaCredi
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300' ?>">
+                    <?= $i ?>
+                </a>
+            <?php endfor; ?>
+
+            <?php if ($paginaCredi < $totalPaginasCredi): ?>
+                <a href="?paginasCredi=<?= $paginaCredi + 1 ?>"
+                    class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">
+                    →
+                </a>
+            <?php endif; ?>
+
+        </div>
+    </div>
+
 
 
 </section>
@@ -441,23 +594,33 @@ $mensajes = $_SESSION['mensaje'] ?? [];
 <script type="module">
     const tableUser = document.getElementById('tableuser');
     const tableSoli = document.getElementById('tablesoli');
+    const tableCredi = document.getElementById('tablecredi');
 
     const linkUser = document.getElementById('users');
     const linkSoli = document.getElementById('soli');
+    const linkCredi = document.getElementById('credi');
+
 
     const updateLinkStyles = (activeId) => {
         if (activeId === 'users') {
             linkUser.classList.add('bg-white', 'text-green-600');
             linkSoli.classList.remove('bg-white', 'text-green-600');
-        } else {
+            linkCredi.classList.remove('bg-white', 'text-green-600');
+        } else if (activeId === 'soli') {
             linkSoli.classList.add('bg-white', 'text-green-600');
             linkUser.classList.remove('bg-white', 'text-green-600');
+            linkCredi.classList.remove('bg-white', 'text-green-600');
+        } else if (activeId === 'credi') {
+            linkCredi.classList.add('bg-white', 'text-green-600');
+            linkUser.classList.remove('bg-white', 'text-green-600');
+            linkSoli.classList.remove('bg-white', 'text-green-600');
         }
     }
 
     const showUsers = () => {
         tableUser.classList.remove('hidden');
         tableSoli.classList.add('hidden');
+        tableCredi.classList.add('hidden');
         localStorage.setItem('activeTab', 'users');
         updateLinkStyles('users');
     }
@@ -465,8 +628,17 @@ $mensajes = $_SESSION['mensaje'] ?? [];
     const showSoli = () => {
         tableSoli.classList.remove('hidden');
         tableUser.classList.add('hidden');
+        tableCredi.classList.add('hidden');
         localStorage.setItem('activeTab', 'soli');
         updateLinkStyles('soli');
+    }
+
+    const showCredi = () => {
+        tableCredi.classList.remove('hidden');
+        tableUser.classList.add('hidden');
+        tableSoli.classList.add('hidden');
+        localStorage.setItem('activeTab', 'credi');
+        updateLinkStyles('credi');
     }
 
     linkUser.onclick = (e) => {
@@ -479,14 +651,21 @@ $mensajes = $_SESSION['mensaje'] ?? [];
         showSoli();
     }
 
+    linkCredi.onclick = (e) => {
+        e.preventDefault();
+        showCredi();
+    }
+
     // Persistencia al recargar
     window.onload = () => {
         const activeTab = localStorage.getItem('activeTab');
 
         if (activeTab === 'soli') {
             showSoli();
+        } else if (activeTab === 'credi') {
+            showCredi();
         } else {
             showUsers();
         }
-    }
+    };
 </script>

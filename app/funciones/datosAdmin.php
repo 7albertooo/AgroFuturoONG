@@ -83,12 +83,39 @@ $datoSoliPendiente = mysqli_fetch_assoc($resulSoliPendiente)['totalSoliPendiente
 
 
 /* ==========================
-       OTROS DATOS
+       Paginación Créditos
 ========================== */
 
+$crediPorPagina = 5;
 
-$sqlCountSubven = "SELECT COUNT(*) AS totalSubven FROM credito";
-$resulCountSubven = mysqli_query($conexion, $sqlCountSubven);
-$datosCountSubven = mysqli_fetch_assoc($resulCountSubven)['totalSubven'] ;
+/* Página actual */
+$paginaCredi = isset($_GET['paginasCredi']) ? (int)$_GET['paginasCredi'] : 1;
+
+/* Offset */
+$inicioCredi = ($paginaCredi - 1) * $crediPorPagina;
+
+/* Total créditos */
+$sqlCountCredi = "SELECT COUNT(*) AS totalcredi FROM credito";
+$resulCountCredi = mysqli_query($conexion, $sqlCountCredi);
+$datosCountCredi = mysqli_fetch_assoc($resulCountCredi)['totalcredi'] ;
+
+/* Total páginas */
+$totalPaginasCredi = ceil($datosCountCredi / $crediPorPagina);
+
+/* Créditos PAGINADOS */
+$sqlCredi = "
+    SELECT c.*, s.id_usuario, u.username as nombreUser
+    FROM credito c
+    INNER JOIN solicitud s ON s.id = c.id_solicitud
+    INNER JOIN usuarios u ON u.id = s.id_usuario
+    ORDER BY c.id DESC
+    LIMIT $inicioCredi, $crediPorPagina
+";
+$resulCredi = mysqli_query($conexion, $sqlCredi);
+$datosCredi = [];
+
+while ($fila = mysqli_fetch_assoc($resulCredi)) {
+    $datosCredi[] = $fila;
+}
 
 ?>
