@@ -2,11 +2,8 @@
 //Iniciamos sesion
 session_start();
 
-$mensajeError = $_SESSION["mensaje"] ?? null;
-
-if(isset($_SESSION["mensaje"])) {
-    unset($_SESSION["mensaje"]);
-}
+$mensajeError = $_SESSION["errores"] ?? null;
+unset($_SESSION["errores"]);
 
 $idioma = $_COOKIE['idioma'] ?? 'es';
 include_once '../../app/config/textos.php';
@@ -77,7 +74,7 @@ include_once '../../app/config/textos.php';
                         <div class="relative">
                             <input
                                 type="text"
-                                name="username"
+                                name="nombreIngresado"
                                 placeholder="<?php echo $textos['auth']['inputs']['user']; ?>"
                                 class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
                                 required>
@@ -86,14 +83,16 @@ include_once '../../app/config/textos.php';
                         <div class="relative">0
                             <input
                                 type="password"
-                                name="password"
+                                name="passwordIngresado"
                                 placeholder="<?php echo $textos['auth']['inputs']['pass']; ?>"
                                 class="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-green-500 text-gray-700 transition-all placeholder:text-gray-400 shadow-sm"
                                 required>
                         </div>
 
-                        <?php if (isset($mensajeError)):?>
-                            <p class="text-red-600 font-semibold"><?= $mensajeError; ?></p>
+                        <?php if (!empty($mensajeError)):?>
+                            <?php foreach($mensajeError as $error):?>
+                            <p class="text-red-600 font-semibold"><?= $error; ?></p>
+                           <?php endforeach ?>
                         <?php endif; ?>
 
                         <button
