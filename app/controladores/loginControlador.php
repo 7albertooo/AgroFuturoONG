@@ -13,8 +13,8 @@ $errores = [];
 
 if(isset($_POST["login"])){
 
-    $nombreIngresado = sanear($_POST["username"]);
-    $passwordIngresado = sanear($_POST["password"]);
+    $nombreIngresado = sanear($_POST["nombreIngresado"]);
+    $passwordIngresado = sanear($_POST["passwordIngresado"]);
 
     // Validaciones básicas
     if(empty($nombreIngresado)){
@@ -31,15 +31,22 @@ if(isset($_POST["login"])){
         exit();
     }
 
-    // Llamamos a la función que YA tienes en loginF.php
+    // Llamamos a la función para comprobar que el usuario es el mismo que se registró
     if(SeleccionarDatos($nombreIngresado, $passwordIngresado,$conexion)){
+        
         //Si el login es correcto guardamos el usuario
-        $_SESSION["usuario"]=$nombreIngresado;
+        $_SESSION["username"]=$nombreIngresado;
+
+        header("Location:../../public/vistas/login.php");
+        exit();
+
     }else{
         //En caso de que el login sea incorrecto lo volvemos a enviar a la vista
         $_SESSION["errores"][]="El usuario o la contraseña no son correctos";
         header("Location: ../../public/vistas/login.php");
         exit();
     }
+    //Recogemos el rol en caso de existir el usuario
+    $rol=conseguirRol($nombreIngresado,$conexion);
 }
 ?>
