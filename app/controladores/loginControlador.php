@@ -14,7 +14,7 @@ $errores = [];
 if(isset($_POST["login"])){
 
     $nombreIngresado = sanear($_POST["nombreIngresado"]);
-    $passwordIngresado = sanear($_POST["passwordIngresado"]);
+    $passwordIngresado = trim($_POST["passwordIngresado"]);
 
     // Validaciones básicas
     if(empty($nombreIngresado)){

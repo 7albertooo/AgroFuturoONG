@@ -1,0 +1,13 @@
+<?php
+session_start();
+
+/* Vaciar todas las variables de sesión */
+$_SESSION = [];
+
+/* Destruir la sesión */
+session_destroy();
+
+
+header("Location: ../../public/vistas/index.php");
+exit;
+?>

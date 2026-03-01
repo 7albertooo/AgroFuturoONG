@@ -19,7 +19,7 @@ function SeleccionarDatos($nombreIngresado,$passwordIngresado,$conexion){
 
 function conseguirRol($nombreIngresado,$conexion){
 
-   $stm=$conexion->prepare("SELECT rol FROM usuario WHERE username= ?");
+   $stm=$conexion->prepare("SELECT rol FROM usuarios WHERE username= ?");
    $stm->bind_param("s",$nombreIngresado);
    $stm->execute();
    $resultado=$stm->get_result();

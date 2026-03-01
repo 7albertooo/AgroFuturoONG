@@ -1,4 +1,5 @@
 <?php
+session_start();
 // 1. Detectar el idioma de la cookie (por defecto 'es')
 $idioma = $_COOKIE['idioma'] ?? 'es';
 
@@ -65,13 +66,30 @@ $idioma_siguiente = ($idioma === 'es') ? 'en' : 'es';
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="ayuda.php"><?php echo $textos['nav']['ayuda']; ?></a></li>
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="#"><?php echo $textos['nav']['apoyar']; ?></a></li>
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="contacto.php"><?php echo $textos['nav']['contacto']; ?></a></li>
+                        <?php if(isset($_SESSION['username'])) :?>
+                        <?php if($_SESSION['rol'] == 'admin') : ?>
+                        <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="admin.php"><?php echo $textos['nav']['admin']; ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_SESSION['rol'] == 'user') : ?>
+                        <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="perfil.php"><?php echo $textos['nav']['perfil']; ?></a></li>
+                        <?php endif; ?>
+                        <?php endif; ?>
                     </ul>
                 </div>
 
                 <div class="hidden lg:flex justify-end items-center gap-4">
+                    <?php if(!isset($_SESSION['username'])) :?>
                     <a href="login.php" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">
                         <?php echo $textos['nav']['login']; ?>
                     </a>
+                    <?php endif; ?>
+
+                    <?php if(isset($_SESSION['username'])) :?>
+                    <a href="../../app/controladores/logout.php" class="px-6 py-2 border-2 border-green-700 text-green-700 font-semibold rounded-full hover:bg-green-700 hover:text-white transition-all duration-300">
+                        <?php echo $textos['nav']['logout']; ?>
+                    </a>
+                    <?php endif; ?>
+
                     
                     <form action="../../app/controladores/cookieC.php" method="POST" class="inline">
                         <input type="hidden" name="idioma" value="<?php echo $idioma_siguiente; ?>">

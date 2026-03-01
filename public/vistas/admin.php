@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 include_once 'header.php';
 include_once '../../app/funciones/datosAdmin.php';
 
@@ -195,7 +193,7 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                                         </div>
                                         <div class="col-span-1">
                                             <label class="block mb-2 text-sm font-medium text-gray-700">Nueva Contraseña</label>
-                                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="••••••••">
+                                            <input type="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
                                         </div>
                                         <div class="col-span-1">
                                             <label class="block mb-2 text-sm font-medium text-gray-700">Rol</label>
@@ -303,22 +301,22 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                         </td>
                         <td class="px-4 py-4 text-gray-600"><?= $soli['nombreUser'] ?></td>
                         <td class="px-4 py-4">
-                            <?php if($soli['estado'] == 'pendiente') :?>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                <?= $soli['estado'] ?>
-                            </span>
+                            <?php if ($soli['estado'] == 'pendiente') : ?>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                    <?= $soli['estado'] ?>
+                                </span>
                             <?php endif; ?>
 
-                            <?php if($soli['estado'] == 'aprobada') :?>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                <?= $soli['estado'] ?>
-                            </span>
+                            <?php if ($soli['estado'] == 'aprobada') : ?>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    <?= $soli['estado'] ?>
+                                </span>
                             <?php endif; ?>
 
-                            <?php if($soli['estado'] == 'rechazada') :?>
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                <?= $soli['estado'] ?>
-                            </span>
+                            <?php if ($soli['estado'] == 'rechazada') : ?>
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                    <?= $soli['estado'] ?>
+                                </span>
                             <?php endif; ?>
 
                         </td>
@@ -336,6 +334,16 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <line x1="18" y1="6" x2="6" y2="18" />
                                         <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </button>
+
+                                <button data-modal-target="view-solicitud-modal-<?= $soli['id'] ?>" data-modal-toggle="view-solicitud-modal-<?= $soli['id'] ?>" type="button" class="text-blue-600 hover:text-blue-900 transition-colors focus:outline-none" id="ver" title="Ver">
+                                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 5.25C9.22586 5.25 6.79699 6.91121 5.12801 8.44832C4.28012 9.22922 3.59626 10.0078 3.12442 10.5906C2.88804 10.8825 2.70368 11.1268 2.57736 11.2997C2.51417 11.3862 2.46542 11.4549 2.43187 11.5029C2.41509 11.5269 2.4021 11.5457 2.393 11.559L2.38227 11.5747L2.37911 11.5794L2.10547 12.0132L2.37809 12.4191L2.37911 12.4206L2.38227 12.4253L2.393 12.441C2.4021 12.4543 2.41509 12.4731 2.43187 12.4971C2.46542 12.5451 2.51417 12.6138 2.57736 12.7003C2.70368 12.8732 2.88804 13.1175 3.12442 13.4094C3.59626 13.9922 4.28012 14.7708 5.12801 15.5517C6.79699 17.0888 9.22586 18.75 12.0001 18.75C14.7743 18.75 17.2031 17.0888 18.8721 15.5517C19.72 14.7708 20.4039 13.9922 20.8757 13.4094C21.1121 13.1175 21.2964 12.8732 21.4228 12.7003C21.4859 12.6138 21.5347 12.5451 21.5682 12.4971C21.585 12.4731 21.598 12.4543 21.6071 12.441L21.6178 12.4253L21.621 12.4206L21.6224 12.4186L21.9035 12L21.622 11.5809L21.621 11.5794L21.6178 11.5747L21.6071 11.559C21.598 11.5457 21.585 11.5269 21.5682 11.5029C21.5347 11.4549 21.4859 11.3862 21.4228 11.2997C21.2964 11.1268 21.1121 10.8825 20.8757 10.5906C20.4039 10.0078 19.72 9.22922 18.8721 8.44832C17.2031 6.91121 14.7743 5.25 12.0001 5.25ZM4.29022 12.4656C4.14684 12.2885 4.02478 12.1311 3.92575 12C4.02478 11.8689 4.14684 11.7115 4.29022 11.5344C4.72924 10.9922 5.36339 10.2708 6.14419 9.55168C7.73256 8.08879 9.80369 6.75 12.0001 6.75C14.1964 6.75 16.2676 8.08879 17.8559 9.55168C18.6367 10.2708 19.2709 10.9922 19.7099 11.5344C19.8533 11.7115 19.9753 11.8689 20.0744 12C19.9753 12.1311 19.8533 12.2885 19.7099 12.4656C19.2709 13.0078 18.6367 13.7292 17.8559 14.4483C16.2676 15.9112 14.1964 17.25 12.0001 17.25C9.80369 17.25 7.73256 15.9112 6.14419 14.4483C5.36339 13.7292 4.72924 13.0078 4.29022 12.4656ZM14.25 12C14.25 13.2426 13.2427 14.25 12 14.25C10.7574 14.25 9.75005 13.2426 9.75005 12C9.75005 10.7574 10.7574 9.75 12 9.75C13.2427 9.75 14.25 10.7574 14.25 12ZM15.75 12C15.75 14.0711 14.0711 15.75 12 15.75C9.92898 15.75 8.25005 14.0711 8.25005 12C8.25005 9.92893 9.92898 8.25 12 8.25C14.0711 8.25 15.75 9.92893 15.75 12Z" fill="#007bff"></path>
+                                        </g>
                                     </svg>
                                 </button>
                             </div>
@@ -419,6 +427,78 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                             </div>
                         </div>
                     </div>
+
+                    <div id="view-solicitud-modal-<?= $soli['id'] ?>" tabindex="-1"
+                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 
+            flex justify-center items-center w-full md:inset-0 
+            h-[calc(100%-1rem)] max-h-full bg-black/50">
+
+                        <div class="relative p-4 w-full max-w-lg max-h-full">
+                            <div class="relative bg-white rounded-2xl shadow-lg border border-gray-100 p-5">
+
+                           
+                                <div class="flex items-center justify-between p-4 md:p-5 rounded-t">
+                                    <h3 class="text-xl font-semibold text-green-600">
+                                        Detalles de la Solicitud
+                                    </h3>
+
+                                    <button type="button"
+                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 
+                               rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                        data-modal-hide="view-solicitud-modal-<?= $soli['id'] ?>">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="p-4 md:p-5 space-y-4 text-sm text-gray-700">
+
+                                    <div>
+                                        <span class="font-semibold">ID Solicitud:</span>
+                                        <?= $soli['id'] ?>
+                                    </div>
+
+                                    <div>
+                                        <span class="font-semibold">Usuario:</span>
+                                        <?= htmlspecialchars($soli['username'] ?? $soli['id_usuario']) ?>
+                                    </div>
+
+                                    <div>
+                                        <span class="font-semibold">Estado:</span>
+                                        <span class="px-3 py-1 rounded-full text-white text-xs
+                                            <?= $soli['estado'] === 'pendiente' ? 'bg-yellow-500' : '' ?>
+                                            <?= $soli['estado'] === 'aprobada' ? 'bg-green-600' : '' ?>
+                                            <?= $soli['estado'] === 'rechazada' ? 'bg-red-600' : '' ?>">
+                                            <?= ucfirst($soli['estado']) ?>
+                                        </span>
+                                    </div>
+
+                                    <div>
+                                        <span class="font-semibold">Fecha de envío:</span>
+                                        <?= $soli['fecha_envio'] ?>
+                                    </div>
+
+                                    <div>
+                                        <span class="font-semibold">Fecha de resolución:</span>
+                                        <?= $soli['fecha_resolucion'] ?? '—' ?>
+                                    </div>
+
+                                    <div>
+                                        <label class="block mb-1 font-semibold">Texto de la solicitud:</label>
+                                        <div class="bg-gray-50 border border-gray-300 rounded-lg p-3 text-gray-800 whitespace-pre-line">
+                                            <?= htmlspecialchars($soli['texto']) ?>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
                 <?php endforeach; ?>
 
             </tbody>
@@ -479,22 +559,22 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                         <td class="px-4 py-4 text-gray-600"><?= $credi['nombreUser'] ?></td>
                         <td class="px-4 py-4 text-gray-600"><?= $credi['cantidad'] ?></td>
                         <td class="px-4 py-4 font-bold text-gray-900"><?= $credi['fecha_envio'] ?></td>
-                        <?php if($credi['estado'] == 'pendiente') :?>
-                        <td class="px-4 py-4">
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                <?= $credi['estado'] ?>
-                            </span>
-                        </td>
+                        <?php if ($credi['estado'] == 'pendiente') : ?>
+                            <td class="px-4 py-4">
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                    <?= $credi['estado'] ?>
+                                </span>
+                            </td>
                         <?php endif; ?>
 
-                        <?php if($credi['estado'] == 'realizado') :?>
-                        <td class="px-4 py-4">
-                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                <?= $credi['estado'] ?>
-                            </span>
-                        </td>
+                        <?php if ($credi['estado'] == 'realizado') : ?>
+                            <td class="px-4 py-4">
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    <?= $credi['estado'] ?>
+                                </span>
+                            </td>
                         <?php endif; ?>
-                        
+
                         <td class="px-4 py-4">
                             <div class="flex justify-end gap-3">
                                 <button data-modal-target="completo-modal-<?= $credi['id'] ?>" data-modal-toggle="completo-modal-<?= $credi['id'] ?>" type="button" class="text-blue-600 hover:text-blue-900 transition-colors focus:outline-none" id="editar" title="Editar">
@@ -532,7 +612,7 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                                     <input type="hidden" name="accion" value="realizadoCredi">
                                     <input type="hidden" name="idCredi" value="<?= $credi['id'] ?>">
 
-                                   <button type="submit" data-modal-hide="completo-modal-<?= $credi['id'] ?>"
+                                    <button type="submit" data-modal-hide="completo-modal-<?= $credi['id'] ?>"
                                         class="w-full bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg py-2 transition-colors mb-2">
                                         Marcar como completado
                                     </button>

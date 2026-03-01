@@ -17,7 +17,11 @@ switch ($idioma) {
                 'ayuda' => 'Request Help',
                 'apoyar' => 'Support',
                 'contacto' => 'Contact',
-                'login' => 'Login'
+                'login' => 'Login',
+                'logout' => 'Logout',
+                'admin' => 'Admin',
+                'perfil' => 'Profile'
+                
             ],
             'hero' => [
                 'titulo' => [
@@ -101,7 +105,10 @@ switch ($idioma) {
                 'ayuda' => 'Solicitar Ayuda',
                 'apoyar' => 'Apoyar',
                 'contacto' => 'Contacto',
-                'login' => 'Iniciar Sesión'
+                'login' => 'Iniciar Sesión',
+                'logout' => 'Cerrar Sesión',
+                'admin' => 'Admin',
+                'perfil' => 'Perfil'
             ],
             'hero' => [
                 'titulo' => [
