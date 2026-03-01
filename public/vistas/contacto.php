@@ -16,12 +16,14 @@
             </div>
         </div>
 
-        <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text">
-            Horario de atención
-        </h3>
-        <p class="text-sm text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
-        <p class="text-sm text-gray-600">Sábados: 10:00 - 14:00</p>
-        <p class="text-sm text-gray-600">Domingos: Cerrado</p>
+        <div class="lg:col-start-1 lg:row-start-4 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-[1.02] transition-transform">
+            <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text">
+                Horario de atención
+            </h3>
+            <p class="text-sm text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
+            <p class="text-sm text-gray-600">Sábados: 10:00 - 14:00</p>
+            <p class="text-sm text-gray-600">Domingos: Cerrado</p>
+        </div>
 
         <div class="lg:col-start-2 lg:row-start-4 p-5 border border-gray-300 shadow-lg rounded-lg justify-start items-start flex flex-col hover:scale-[1.02] transition-transform">
             <h3 class="text-lg font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-1">
