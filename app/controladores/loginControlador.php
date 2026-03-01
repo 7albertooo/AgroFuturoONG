@@ -36,8 +36,8 @@ if(isset($_POST["login"])){
         
         //Si el login es correcto guardamos el usuario
         $_SESSION["username"]=$nombreIngresado;
-
-        header("Location:../../public/vistas/login.php");
+        $_SESSION['rol']=conseguirRol($nombreIngresado,$conexion);
+        header("Location:../../public/vistas/index.php");
         exit();
 
     }else{
@@ -46,7 +46,6 @@ if(isset($_POST["login"])){
         header("Location: ../../public/vistas/login.php");
         exit();
     }
-    //Recogemos el rol en caso de existir el usuario
-    $rol=conseguirRol($nombreIngresado,$conexion);
+    
 }
 ?>
