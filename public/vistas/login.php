@@ -45,81 +45,7 @@ $APP_NAME = "AgroFuturoONG";
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <style>
-        .goog-te-banner-frame.skiptranslate,
-        .goog-te-banner {
-            display: none !important;
-        }
-
-        body {
-            top: 0px !important;
-        }
-
-        .translate-wrapper {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 12px;
-            border-radius: 9999px;
-            border: 2px solid #16a34a;
-            background: white;
-            transition: all 0.3s ease;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .translate-wrapper:hover {
-            background-color: #f0fdf4;
-        }
-
-        .goog-te-gadget {
-            font-family: inherit !important;
-            font-size: 0 !important;
-            display: flex !important;
-            align-items: center !important;
-            margin: 0 !important;
-        }
-
-        .goog-te-gadget .goog-te-combo {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer !important;
-            z-index: 20;
-            margin: 0 !important;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        .goog-te-gadget .goog-te-combo {
-            margin: 0 !important;
-            padding: 0 !important;
-            border: none !important;
-            background: transparent !important;
-            color: #374151 !important;
-            font-size: 14px !important;
-            outline: none !important;
-            cursor: pointer !important;
-            font-family: inherit !important;
-            position: relative;
-            z-index: 10;
-        }
-
-        .goog-logo-link,
-        .goog-te-gadget span {
-            display: none !important;
-        }
-
-        .goog-te-gadget img {
-            display: inline-block !important;
-            margin-right: 4px !important;
-            vertical-align: middle !important;
-        }
-    </style>
+    
     <style type="text/tailwindcss">
 
         .suse-mono-regular {
@@ -153,9 +79,7 @@ $APP_NAME = "AgroFuturoONG";
             class="flex items-center gap-2 text-gray-600 hover:text-green-700 transition font-medium">
             ← Volver atrás
         </a>
-        <div class="translate-wrapper" id="translate_container">
-            <div id="google_translate_element"></div>
-        </div>
+    
     </div>
 
 

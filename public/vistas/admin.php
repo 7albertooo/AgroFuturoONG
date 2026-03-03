@@ -3,10 +3,7 @@
 include_once 'header.php';
 include_once '../../app/funciones/datosAdmin.php';
 
-if (!isset($_SESSION['username']) || $_SESSION['rol'] !== 'admin') {
-    header("Location: index.php");
-    exit();
-}
+
 
 $mensajes = $_SESSION['mensaje'] ?? [];
 ?>
