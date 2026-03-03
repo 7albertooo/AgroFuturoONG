@@ -46,7 +46,7 @@ $APP_NAME = "AgroFuturoONG";
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
+
     <style type="text/tailwindcss">
 
         .suse-mono-regular {
@@ -81,7 +81,7 @@ $APP_NAME = "AgroFuturoONG";
             class="flex items-center gap-2 text-gray-600 hover:text-green-700 transition font-medium">
             ← Volver atrás
         </a>
-       
+
     </div>
 
 
@@ -135,18 +135,29 @@ $APP_NAME = "AgroFuturoONG";
                         </div>
 
                         <?php if (!empty($errores)) : ?>
-
-                            <?php foreach ($errores as $error) : ?>
-                                <p style="color:red"><?= $error ?> </p>
-                            <?php endforeach; ?>
+                            <div class="w-full mb-6">
+                                <div class="p-4 rounded-lg border border-red-300 bg-red-100 text-red-800 shadow-sm">
+                                    <div class="flex items-center mb-2">
+                                        <span class="font-semibold">Se encontraron errores:</span>
+                                    </div>
+                                    <ul class="list-disc list-outside pl-5 space-y-1 text-sm">
+                                        <?php foreach ($errores as $error) : ?>
+                                            <li><?= htmlspecialchars($error) ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </div>
                         <?php endif; ?>
 
                         <?php if (!empty($mensaje)) : ?>
-
-                            <p style="color:green"><?= $mensaje ?> </p>
-
+                            <div class="w-full mb-6">
+                                <div class="p-4 rounded-lg border border-green-300 bg-green-100 text-green-800 shadow-sm">
+                                    <div class="flex items-center">
+                                        <span class="font-semibold">✔ <?= htmlspecialchars($mensaje) ?></span>
+                                    </div>
+                                </div>
+                            </div>
                         <?php endif; ?>
-
                     </form>
                 </div>
             </div>

@@ -108,7 +108,7 @@ $APP_NAME = "AgroFuturoONG";
                                 required>
                         </div>
 
-                        <div class="relative">0
+                        <div class="relative">
                             <input
                                 type="password"
                                 name="passwordIngresado"

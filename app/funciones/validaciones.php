@@ -13,11 +13,11 @@ function validarDatos($datos)
     $errores = [];
 
     if (strlen($datos['username']) < 3) {
-        $errores[] = "EL usuario debe contener como minimo 3 caracteres";
+        $errores[] = "E usuario debe contener como minimo 3 caracteres";
     }
 
     if (!preg_match("/[a-zA-Z0-9]/", $datos['username'])) {
-        $errores[] = "EL usuario debe contener como minimo una minuscula, una mayuscula y un numero";
+        $errores[] = "El usuario debe contener como minimo una minuscula, una mayuscula y un numero";
     }
 
     if (strlen($datos['password']) < 8) {
