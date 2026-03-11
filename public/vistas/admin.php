@@ -326,6 +326,8 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                         <td class="px-4 py-4 text-right text-gray-500"><?= $soli['fecha_resolucion'] ?></td>
                         <td class="px-4 py-4">
                             <div class="flex justify-end gap-3">
+
+                            <?php if($soli['estado'] == 'pendiente') :?>
                                 <button data-modal-target="aceptar-modal-<?= $soli['id'] ?>" data-modal-toggle="aceptar-modal-<?= $soli['id'] ?>" type="button" class="text-blue-600 hover:text-blue-900 transition-colors focus:outline-none" id="editar" title="Editar">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 13l4 4L19 7" />
@@ -338,6 +340,8 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                                         <line x1="6" y1="6" x2="18" y2="18" />
                                     </svg>
                                 </button>
+
+                                <?php endif;?>
 
                                 <button data-modal-target="view-solicitud-modal-<?= $soli['id'] ?>" data-modal-toggle="view-solicitud-modal-<?= $soli['id'] ?>" type="button" class="text-blue-600 hover:text-blue-900 transition-colors focus:outline-none" id="ver" title="Ver">
                                     <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -579,11 +583,13 @@ $mensajes = $_SESSION['mensaje'] ?? [];
 
                         <td class="px-4 py-4">
                             <div class="flex justify-end gap-3">
+                                <?php if($credi['estado'] == 'pendiente'): ?>
                                 <button data-modal-target="completo-modal-<?= $credi['id'] ?>" data-modal-toggle="completo-modal-<?= $credi['id'] ?>" type="button" class="text-blue-600 hover:text-blue-900 transition-colors focus:outline-none" id="editar" title="Editar">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 13l4 4L19 7" />
                                     </svg>
                                 </button>
+                                <?php endif; ?>
                             </div>
                         </td>
                     </tr>
