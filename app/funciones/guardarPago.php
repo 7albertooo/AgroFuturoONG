@@ -26,7 +26,7 @@
     function actualizarPago($con, $token, $estado, $fecha, $email){
 
     try{
-        $sql = "UPDATE donaciones SET token = ?, estado = ?, fecha = ? WHERE email = ? AND estado = 'pendiente' AND token IS NULL";
+        $sql = "UPDATE donaciones SET token = ?, estado = ?, fecha = ? WHERE email = ? AND estado = 'pendiente'";
 
         $stmt = $con->prepare($sql);
 
