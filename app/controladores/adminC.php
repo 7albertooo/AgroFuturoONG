@@ -128,8 +128,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     error_log('Error cURL webhook solicitud: ' . curl_error($ch));
                 } else {
                     $response_data = json_decode($result, true);
-                    if (isset($response_data['porcentaje'])) {
-                        actualizarPorcentajeSolicitud($conexion, $idSoli, $response_data['porcentaje']);
+                    
+                    // Soporte para ambos formatos: {"porcentaje": 85} o solo el valor 85
+                    $porcentaje = null;
+                    if (is_array($response_data) && isset($response_data['porcentaje'])) {
+                        $porcentaje = $response_data['porcentaje'];
+                    } elseif (is_numeric($result)) {
+                        $porcentaje = $result;
+                    }
+
+                    if ($porcentaje !== null) {
+                        actualizarPorcentajeSolicitud($conexion, $idSoli, $porcentaje);
+                    } else {
+                        error_log("Respuesta del webhook no válida o falta el porcentaje: " . $result);
                     }
                 }
                 curl_close($ch);
