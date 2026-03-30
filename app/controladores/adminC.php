@@ -150,6 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             header("Location: ../../public/vistas/ayuda.php");
             exit();
+            break;
 
         case 'realizadoCredi':
             $IDcredi = (int)$_POST['idCredi'];

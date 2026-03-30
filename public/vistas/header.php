@@ -195,11 +195,24 @@ $APP_NAME = "AgroFuturoONG";
                 <ul class="flex flex-col space-y-4">
                     <li><a class="text-gray-800 font-medium hover:text-green-700 block px-4 py-2" href="index.php">Inicio</a></li>
                     <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="ayuda.php">Solicitar Ayuda</a></li>
-                    <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="#">Apoyar</a></li>
+                    <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="pago.php">Apoyar</a></li>
+                    <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="contacto.php">Contacto</a></li>
+                    <?php if (isset($_SESSION['username'])) : ?>
+                        <?php if ($_SESSION['rol'] == 'admin') : ?>
+                            <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="admin.php">Admin</a></li>
+                        <?php endif; ?>
+                        <?php if ($_SESSION['rol'] == 'user') : ?>
+                            <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="perfil.php">Perfil</a></li>
+                        <?php endif; ?>
+                    <?php endif; ?>
                     <li class="pt-2">
-                        <a href="login.php" class="w-full px-6 py-2 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300 inline-block">Iniciar Sesión</a>
+                        <?php if (!isset($_SESSION['username'])) : ?>
+                            <a href="login.php" class="w-full px-6 py-2 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300 inline-block">Iniciar Sesión</a>
+                        <?php endif; ?>
+                        <?php if (isset($_SESSION['username'])) : ?>
+                            <a href="../../app/controladores/logout.php" class="w-full px-6 py-2 bg-green-700 text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300 inline-block">Cerrar Sesión</a>
+                        <?php endif; ?>
                     </li>
-
                   
                     <li class="pt-4 flex justify-center" id="mobile-translate-target">
                         
