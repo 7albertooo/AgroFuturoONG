@@ -37,6 +37,7 @@ if(isset($_POST["login"])){
         //Si el login es correcto guardamos el usuario
         $_SESSION["username"]=$nombreIngresado;
         $_SESSION['rol']=conseguirRol($nombreIngresado,$conexion);
+        $_SESSION['usuario_id']=conseguirId($nombreIngresado,$conexion);
         header("Location:../../public/vistas/index.php");
         exit();
 

@@ -210,7 +210,7 @@ include_once 'header.php';
                 <h2 class="text-xl font-bold text-green-700">4</h2>
             </div>
             <h2 class="text-xl font-bold text-gray-800 mb-2">Recibe Apoyo</h2>
-            <p class="text-gray-600">Obtén tu subvención o microcrédito.</p>
+            <p class="text-gray-600">Obtén tu microcrédito para impulsar tu proyecto.</p>
         </div>
     </div>
 

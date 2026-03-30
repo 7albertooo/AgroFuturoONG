@@ -80,6 +80,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             break;
 
+        case 'crearSolicitud':
+            if (!isset($_SESSION['usuario_id'])) {
+                header("Location: ../../public/vistas/login.php");
+                exit();
+            }
+            $tipo = "credito"; // Solo se permiten créditos ahora
+            $mensaje = $_POST['textoSolicitud'];
+            
+            // Nuevos campos
+            $experiencia = isset($_POST['experiencia']) ? 1 : 0;
+            $tiene_tierra = isset($_POST['tiene_tierra']) ? 1 : 0;
+            $cantidad = isset($_POST['cantidad']) ? (int)$_POST['cantidad'] : 0;
+            $edad = isset($_POST['edad']) ? (int)$_POST['edad'] : 0;
+
+            $resultado = crearSolicitud($conexion, $tipo, $mensaje, $experiencia, $tiene_tierra, $cantidad, $edad, $usuario_id);
+            
+            if ($resultado) {
+                $idSoli = $resultado;
+                $_SESSION['mensaje'][] = "Solicitud enviada correctamente.";
+
+                $url_webhook = "https://24d2-88-98-119-213.ngrok-free.app/webhook-test/solicitud";
+                
+                $data = [
+                    "tipo" => $tipo,
+                    "descripcion" => $mensaje,
+                    "usuario_id" => (int)$usuario_id,
+                    "experiencia" => (bool)$experiencia,
+                    "tiene_tierra" => (bool)$tiene_tierra,
+                    "cantidad" => (int)$cantidad,
+                    "edad" => (int)$edad,
+                    "id_solicitud" => (int)$idSoli
+                ];
+
+                $ch = curl_init($url_webhook);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+                $result = curl_exec($ch);
+                
+                if (!curl_errno($ch)) {
+                    $response_data = json_decode($result, true);
+                    if (isset($response_data['porcentaje'])) {
+                        actualizarPorcentajeSolicitud($conexion, $idSoli, $response_data['porcentaje']);
+                    }
+                }
+                curl_close($ch);
+            } else {
+                $_SESSION['mensaje'][] = "Error al enviar la solicitud.";
+            }
+            header("Location: ../../public/vistas/ayuda.php");
+            exit();
+
         case 'realizadoCredi':
             $IDcredi = (int)$_POST['idCredi'];
             $resultado = realizadoCredi($conexion, $IDcredi);

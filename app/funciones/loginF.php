@@ -34,4 +34,21 @@ function conseguirRol($nombreIngresado,$conexion){
    $stm->close();
    return null;   
 }
+
+function conseguirId($nombreIngresado,$conexion){
+
+   $stm=$conexion->prepare("SELECT id FROM usuarios WHERE username= ?");
+   $stm->bind_param("s",$nombreIngresado);
+   $stm->execute();
+   $resultado=$stm->get_result();
+   //Verificamos que el usuario existe
+   if($fila=$resultado->fetch_assoc()){
+      $id=$fila['id'];
+      $stm->close();
+      return $id;
+   }
+   //Si el usuario no existe aún
+   $stm->close();
+   return null;   
+}
 ?>
