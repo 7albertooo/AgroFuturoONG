@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+
+if (empty($_SESSION["usuario_id"])) {
+    header("Location: login.php");
+    exit();
+}
+
 
 include_once 'header.php';
 include_once '../../app/funciones/datosAdmin.php';
