@@ -155,7 +155,7 @@ $APP_NAME = "AgroFuturoONG";
                     <ul class="flex space-x-8">
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="index.php">Inicio</a></li>
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="ayuda.php">Solicitar Ayuda</a></li>
-                        <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="#">Apoyar</a></li>
+                        <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="pago.php">Apoyar</a></li>
                         <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="contacto.php">Contacto</a></li>
                         <?php if (isset($_SESSION['username'])) : ?>
                             <?php if ($_SESSION['rol'] == 'admin') : ?>
