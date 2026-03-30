@@ -103,7 +103,7 @@ if (!empty($session_id)) {
     <h2 class="text-3xl md:text-5xl font-bold bg-black bg-clip-text text-transparent mb-4 text-center">
         Siembra <span class="bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent">esperanza</span> hoy
     </h2>
-    <p class="max-w-md text-center text-gray-500  px-2">Cada peso que donas se convierte en semillas, herramientas y oportunidades para familias rurales.</p>
+    <p class="max-w-md text-center text-gray-500  px-2">Cada euro que donas se convierte en semillas, herramientas y oportunidades para familias rurales.</p>
 
     <div class="flex flex-col w-full max-w-[600px] mt-5 rounded-2xl shadow-xl border border-gray-200 bg-white overflow-hidden">
 
@@ -151,7 +151,7 @@ if (!empty($session_id)) {
                             <label class="cursor-pointer">
                                 <input type="radio" name="monto" value="<?= $monto ?>" <?= ($monto == 500) ? 'checked' : '' ?> class="peer sr-only">
                                 <div class="border-2 border-gray-200 py-3 md:py-4 rounded-xl font-bold text-lg md:text-xl text-center text-slate-700 transition-all peer-checked:bg-green-600 peer-checked:text-white peer-checked:border-green-600">
-                                    $<?= $monto ?>
+                                    <?= $monto ?>€
                                 </div>
                             </label>
                         <?php endforeach; ?>
