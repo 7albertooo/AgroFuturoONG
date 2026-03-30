@@ -94,13 +94,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cantidad = isset($_POST['cantidad']) ? (int)$_POST['cantidad'] : 0;
             $edad = isset($_POST['edad']) ? (int)$_POST['edad'] : 0;
 
+            $usuario_id = $_SESSION['usuario_id'];
             $resultado = crearSolicitud($conexion, $tipo, $mensaje, $experiencia, $tiene_tierra, $cantidad, $edad, $usuario_id);
             
             if ($resultado) {
                 $idSoli = $resultado;
                 $_SESSION['mensaje'][] = "Solicitud enviada correctamente.";
 
-                $url_webhook = "https://24d2-88-98-119-213.ngrok-free.app/webhook-test/solicitud";
+                $url_webhook = "https://24d2-88-98-119-213.ngrok-free.app/webhook/solicitud";
                 
                 $data = [
                     "tipo" => $tipo,
@@ -123,7 +124,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 curl_setopt($ch, CURLOPT_TIMEOUT, 10);
                 $result = curl_exec($ch);
                 
-                if (!curl_errno($ch)) {
+                if (curl_errno($ch)) {
+                    error_log('Error cURL webhook solicitud: ' . curl_error($ch));
+                } else {
                     $response_data = json_decode($result, true);
                     if (isset($response_data['porcentaje'])) {
                         actualizarPorcentajeSolicitud($conexion, $idSoli, $response_data['porcentaje']);
@@ -131,6 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 curl_close($ch);
             } else {
+                error_log("Error al crear solicitud en base de datos.");
                 $_SESSION['mensaje'][] = "Error al enviar la solicitud.";
             }
             header("Location: ../../public/vistas/ayuda.php");
