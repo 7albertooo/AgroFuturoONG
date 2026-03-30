@@ -23,24 +23,59 @@ if (!empty($session_id)) {
         $cantidad = $sesion->amount_total / 100;
         $estado = $sesion->payment_status;
         $fecha = date("Y-m-d H:i:s");
-        
+
+        // Verificar si ya se procesó este pago
+        $query_check = "SELECT estado FROM donaciones WHERE token = ? AND estado != 'pendiente'";
+        $stmt_check = $conexion->prepare($query_check);
+        $stmt_check->bind_param("s", $session_id);
+        $stmt_check->execute();
+        $result_check = $stmt_check->get_result();
+
+        if ($result_check->num_rows > 0) {
+            // Ya procesado, obtener el estado existente
+            $row = $result_check->fetch_assoc();
+            $estado = $row['estado'];
+        } else {
+            // No procesado, proceder con el procesamiento
+            if ($estado === 'paid') {
+                $estado = 'pagado';
+
+                $url = "https://24d2-88-98-119-213.ngrok-free.app/webhook/donacion"; 
+
+                $data = [
+                    "nombre"   => $nombre,
+                    "email"    => $email,
+                    "cantidad" => $cantidad
+                ];
+
+                $ch = curl_init($url);
+                curl_setopt($ch, CURLOPT_POST,          1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS,    json_encode($data));
+                curl_setopt($ch, CURLOPT_HTTPHEADER,    ['Content-Type: application/json']);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
+                curl_setopt($ch, CURLOPT_TIMEOUT,       10);     
+                $result    = curl_exec($ch);
+                $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+                if (curl_errno($ch)) {
+                    error_log('Error cURL donación: ' . curl_error($ch)); 
+                } else {
+                    error_log("Webhook donación → HTTP $http_code | Respuesta: $result");
+                }
+
+                curl_close($ch);
+                
+            } else {
+                $estado = 'cancelado';
+            }
+
+            actualizarPago($conexion, $session_id, $estado, $fecha, $email);
+        }
     } catch (Exception $e) {
-        
         $error_message = "Error al procesar la sesión de pago: " . $e->getMessage();
     }
-}
-
-if(!empty($estado)){
-
-    if ($estado === 'paid') {
-            $estado = 'pagado';
-    }else {
-        $estado = 'cancelado';
-    }
-        
-
-        actualizarPago($conexion, $session_id, $estado, $fecha, $email );
-    
 }
 
 ?>
@@ -51,7 +86,7 @@ if(!empty($estado)){
     <?php
     if (!empty($estado)) {
         if ($estado === 'pagado') {
-            
+
             echo "<div class='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4' role='alert'>
                     <span class='block sm:inline'>Gracias por su donación</span>
                 </div>";
@@ -62,9 +97,7 @@ if(!empty($estado)){
                 </div>";
         }
     }
-    if (isset($error_message)) {
-        echo "<p class='text-red-600 font-bold mb-4 text-center'>$error_message</p>";
-    }
+   
     ?>
 
     <h2 class="text-3xl md:text-5xl font-bold bg-black bg-clip-text text-transparent mb-4 text-center">
