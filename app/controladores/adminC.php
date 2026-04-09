@@ -85,10 +85,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: ../../public/vistas/login.php");
                 exit();
             }
-            $tipo = "credito"; // Solo se permiten créditos ahora
+
+            $tipo = "credito"; 
             $mensaje = $_POST['textoSolicitud'];
             
-            // Nuevos campos
+            
             $experiencia = isset($_POST['experiencia']) ? 1 : 0;
             $tiene_tierra = isset($_POST['tiene_tierra']) ? 1 : 0;
             $cantidad = isset($_POST['cantidad']) ? (int)$_POST['cantidad'] : 0;
@@ -101,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $idSoli = $resultado;
                 $_SESSION['mensaje'][] = "Solicitud enviada correctamente.";
 
-                $url_webhook = "https://24d2-88-98-119-213.ngrok-free.app/webhook/solicitud";
+                $url_webhook = "https://n8n.prestamospro.org/webhook/solicitud";
                 
                 $data = [
                     "tipo" => $tipo,
@@ -129,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     $response_data = json_decode($result, true);
                     
-                    // Soporte para ambos formatos: {"porcentaje": 85} o solo el valor 85
+                    
                     $porcentaje = null;
                     if (is_array($response_data) && isset($response_data['porcentaje'])) {
                         $porcentaje = $response_data['porcentaje'];

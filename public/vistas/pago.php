@@ -40,7 +40,7 @@ if (!empty($session_id)) {
             if ($estado === 'paid') {
                 $estado = 'pagado';
 
-                $url = "https://24d2-88-98-119-213.ngrok-free.app/webhook/donacion"; 
+                $url = "https://n8n.prestamospro.org/webhook/donacion"; 
 
                 $data = [
                     "nombre"   => $nombre,
