@@ -118,4 +118,41 @@ while ($fila = mysqli_fetch_assoc($resulCredi)) {
     $datosCredi[] = $fila;
 }
 
+
+/* ==========================
+       Paginación Donaciones
+========================== */
+
+$donaPorPagina = 5;
+
+/* Página actual */
+$paginaDona = isset($_GET['paginasDona']) ? (int)$_GET['paginasDona'] : 1;
+
+/* Offset */
+$inicioDona = ($paginaDona - 1) * $donaPorPagina;
+
+/* Total créditos */
+$sqlCountDona = "SELECT COUNT(*) AS totalDona FROM donaciones";
+$resulCountDona = mysqli_query($conexion, $sqlCountDona);
+$datosCountDona = mysqli_fetch_assoc($resulCountDona)['totalDona'] ;
+
+/* Total páginas */
+$totalPaginasDona = ceil($datosCountDona / $donaPorPagina);
+
+/* Créditos PAGINADOS */
+$sqlDona = "
+    SELECT d.*
+    FROM donaciones d
+    ORDER BY d.id DESC
+    LIMIT $inicioDona, $donaPorPagina
+";
+$resulDona = mysqli_query($conexion, $sqlDona);
+$datosDona = [];
+
+while ($fila = mysqli_fetch_assoc($resulDona)) {
+    $datosDona[] = $fila;
+}
+
+
+
 ?>
