@@ -92,6 +92,7 @@ $mensajes = $_SESSION['mensaje'] ?? [];
             </div>
         </div>
 
+
     </div>
 
 
@@ -123,6 +124,15 @@ $mensajes = $_SESSION['mensaje'] ?? [];
                         <path d="M7 7h.01" />
                     </svg>
                     <span class="font-medium">Creditos</span>
+                </a>
+            </li>
+            
+            <li class="flex-1">
+                <a id="dona" href="#" class="flex items-center justify-center gap-2 p-1 rounded-lg transition-colors hover:bg-gray-300 focus:bg-white focus:text-green-600 outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                    </svg>
+                    <span class="font-medium">Donaciones</span>
                 </a>
             </li>
 
@@ -705,6 +715,87 @@ $mensajes = $_SESSION['mensaje'] ?? [];
     </div>
 
 
+    <div class="w-9/10 overflow-x-auto bg-white p-6 rounded-lg shadow-sm hidden" id="tabledona">
+        <table class="min-w-full divide-y divide-gray-200 text-left text-sm">
+
+            <thead class="text-gray-500 uppercase font-medium">
+                <tr>
+                    <th class="px-4 py-3">ID Donacion</th>
+                    <th class="px-4 py-3">Nombre</th>
+                    <th class="px-4 py-3">Email</th>
+                    <th class="px-4 py-3">Monto</th>
+                    <th class="px-4 py-3">Estado</th>
+                    <th class="px-4 py-3">Fecha</th>
+                    <th class="px-4 py-3">Tipo</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <?php foreach ($datosDona as $dona) : ?>
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-4">
+                            <div class="font-semibold text-gray-900"><?= $dona['id'] ?></div>
+                        </td>
+                        <td class="px-4 py-4 text-gray-600"><?= $dona['nombre'] ?></td>
+                        <td class="px-4 py-4 text-gray-600"><?= $dona['email'] ?></td>
+                        <td class="px-4 py-4 text-gray-600"><?= $dona['monto_euros'] ?></td>
+                        <?php if ($dona['estado'] == 'cancelado') : ?>
+                            <td class="px-4 py-4">
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                    <?= $dona['estado'] ?>
+                                </span>
+                            </td>
+                        <?php endif; ?>
+
+                        <?php if ($dona['estado'] == 'pagado') : ?>
+                            <td class="px-4 py-4">
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    <?= $dona['estado'] ?>
+                                </span>
+                            </td>
+                        <?php endif; ?>
+
+                        <td class="px-4 py-4 font-bold text-gray-900"><?= $dona['fecha'] ?></td>
+                        <td class="px-4 py-4 font-bold text-gray-900"><?= $dona['tipo'] ?></td>
+                    </tr>
+
+
+                <?php endforeach; ?>
+
+            </tbody>
+
+
+        </table>
+
+        <div class="flex justify-end mt-6 gap-1">
+
+            <?php if ($paginaDona > 1): ?>
+                <a href="?paginasDona=<?= $paginaDona - 1 ?>"
+                    class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">
+                    ←
+                </a>
+            <?php endif; ?>
+
+            <?php for ($i = 1; $i <= $totalPaginasDona; $i++): ?>
+                <a href="?paginasDona=<?= $i ?>"
+                    class="px-3 py-1 rounded
+           <?= $i == $paginaDona
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300' ?>">
+                    <?= $i ?>
+                </a>
+            <?php endfor; ?>
+
+            <?php if ($paginaDona < $totalPaginasDona): ?>
+                <a href="?paginasDona=<?= $paginaDona + 1 ?>"
+                    class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">
+                    →
+                </a>
+            <?php endif; ?>
+
+        </div>
+    </div>
+
+
 
 </section>
 
@@ -716,10 +807,12 @@ $mensajes = $_SESSION['mensaje'] ?? [];
     const tableUser = document.getElementById('tableuser');
     const tableSoli = document.getElementById('tablesoli');
     const tableCredi = document.getElementById('tablecredi');
+    const tableDona = document.getElementById('tabledona');
 
     const linkUser = document.getElementById('users');
     const linkSoli = document.getElementById('soli');
     const linkCredi = document.getElementById('credi');
+    const linkDona = document.getElementById('dona');
 
 
     const updateLinkStyles = (activeId) => {
@@ -727,14 +820,22 @@ $mensajes = $_SESSION['mensaje'] ?? [];
             linkUser.classList.add('bg-white', 'text-green-600');
             linkSoli.classList.remove('bg-white', 'text-green-600');
             linkCredi.classList.remove('bg-white', 'text-green-600');
+            linkDona.classList.remove('bg-white', 'text-green-600');
         } else if (activeId === 'soli') {
             linkSoli.classList.add('bg-white', 'text-green-600');
             linkUser.classList.remove('bg-white', 'text-green-600');
             linkCredi.classList.remove('bg-white', 'text-green-600');
+            linkDona.classList.remove('bg-white', 'text-green-600');
         } else if (activeId === 'credi') {
             linkCredi.classList.add('bg-white', 'text-green-600');
             linkUser.classList.remove('bg-white', 'text-green-600');
             linkSoli.classList.remove('bg-white', 'text-green-600');
+            linkDona.classList.remove('bg-white', 'text-green-600');
+        } else if (activeId === 'dona') {
+            linkDona.classList.add('bg-white', 'text-green-600');
+            linkUser.classList.remove('bg-white', 'text-green-600');
+            linkSoli.classList.remove('bg-white', 'text-green-600');
+            linkCredi.classList.remove('bg-white', 'text-green-600');
         }
     }
 
@@ -742,6 +843,7 @@ $mensajes = $_SESSION['mensaje'] ?? [];
         tableUser.classList.remove('hidden');
         tableSoli.classList.add('hidden');
         tableCredi.classList.add('hidden');
+        tableDona.classList.add('hidden');
         localStorage.setItem('activeTab', 'users');
         updateLinkStyles('users');
     }
@@ -750,6 +852,7 @@ $mensajes = $_SESSION['mensaje'] ?? [];
         tableSoli.classList.remove('hidden');
         tableUser.classList.add('hidden');
         tableCredi.classList.add('hidden');
+        tableDona.classList.add('hidden');
         localStorage.setItem('activeTab', 'soli');
         updateLinkStyles('soli');
     }
@@ -758,8 +861,18 @@ $mensajes = $_SESSION['mensaje'] ?? [];
         tableCredi.classList.remove('hidden');
         tableUser.classList.add('hidden');
         tableSoli.classList.add('hidden');
+        tableDona.classList.add('hidden');
         localStorage.setItem('activeTab', 'credi');
         updateLinkStyles('credi');
+    }
+
+    const showDona = () => {
+        tableDona.classList.remove('hidden');
+        tableUser.classList.add('hidden');
+        tableSoli.classList.add('hidden');
+        tableCredi.classList.add('hidden');
+        localStorage.setItem('activeTab', 'dona');
+        updateLinkStyles('dona');
     }
 
     linkUser.onclick = (e) => {
@@ -777,6 +890,11 @@ $mensajes = $_SESSION['mensaje'] ?? [];
         showCredi();
     }
 
+    linkDona.onclick = (e) => {
+        e.preventDefault();
+        showDona();
+    }
+
     // Persistencia al recargar
     window.onload = () => {
         const activeTab = localStorage.getItem('activeTab');
@@ -785,6 +903,8 @@ $mensajes = $_SESSION['mensaje'] ?? [];
             showSoli();
         } else if (activeTab === 'credi') {
             showCredi();
+        } else if (activeTab === 'dona') {
+            showDona();
         } else {
             showUsers();
         }
