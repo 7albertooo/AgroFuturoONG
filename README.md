@@ -42,28 +42,42 @@ Incluye un **panel de administración**, perfiles de usuario y herramientas de s
 ```text
 AgroFuturoONG/
 ├── app/                          # Lógica de la aplicación (PHP)
-│   ├── config/                   # Configuración de la aplicación
-│   │   └── constantes.php        # Constantes globales del proyecto
-│   ├── conexion/                 # Gestión de base de datos
-│   │   └── ejConexion.php        # Ejemplo de conexión a la BD
-│   ├── controladores/            # Controladores de la aplicación
-│   │   └── ejemploControlador.php # Ejemplo de controlador
-│   └── funciones/                # Funciones auxiliares y utilidades
-│       └── ejemploFuncion.php    # Ejemplo de función auxiliar
-├── public/                       # Archivos accesibles públicamente
-│   ├── assets/                   # Imágenes y recursos estáticos
-│   │   ├── style/                # Archivos CSS (Tailwind)
-│   │   │   ├── styles.css        # CSS compilado de Tailwind
-│   │   │   └── tailwind.css      # Importación de Tailwind
-│   │   └── img.png               # Recursos de imágenes
-│   └── vistas/                   # Vistas públicas
-│       │── header.php        # Encabezado de la aplicación
-│       └── index.php             # Punto de entrada de la aplicación
-├── node_modules/                 # Dependencias de npm
-├── .env                          # Archivo de configuración de entorno
-├── .gitignore                    # Archivo de configuración de Git
-├── package.json                  # Configuración de npm
-├── package-lock.json             # Bloqueo de versiones de dependencias
+│   ├── config/                   # Configuración y conexión a la base de datos
+│   │   └── conexion/             # Conexión MySQL y variables de entorno
+│   │       └── conexion.php
+│   ├── controladores/            # Controladores del sistema
+│   │   ├── adminC.php
+│   │   ├── loginControlador.php
+│   │   ├── logout.php
+│   │   └── registroControlador.php
+│   └── funciones/                # Funciones de negocio y helpers
+│       ├── adminF.php
+│       ├── checkout.php
+│       ├── datosAdmin.php
+│       ├── datosUser.php
+│       ├── guardarPago.php
+│       ├── loginF.php
+│       ├── registroF.php
+│       └── validaciones.php
+├── public/                       # Archivos accesibles desde el navegador
+│   ├── assets/                   # Recursos estáticos (imágenes, iconos, etc.)
+│   └── vistas/                   # Vistas PHP públicas
+│       ├── admin.php
+│       ├── ayuda.php
+│       ├── contacto.php
+│       ├── footer.php
+│       ├── header.php
+│       ├── index.php
+│       ├── login.php
+│       ├── pago.php
+│       ├── registro.php
+│       └── user.php
+├── vendor/                       # Dependencias instaladas por Composer
+│   └── ...
+├── .env                          # Configuración de entorno (variables privadas)
+├── .gitignore                    # Archivos y carpetas ignorados por Git
+├── composer.json                 # Dependencias PHP del proyecto
+├── composer.lock                 # Versión exacta de dependencias
 └── README.md                     # Documentación del proyecto
 ```
 
