@@ -161,8 +161,8 @@ $APP_NAME = "AgroFuturoONG";
                             <?php if ($_SESSION['rol'] == 'admin') : ?>
                                 <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="admin.php">Admin</a></li>
                             <?php endif; ?>
-                            <?php if ($_SESSION['rol'] == 'user') : ?>
-                                <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="perfil.php">Perfil</a></li>
+                            <?php if ($_SESSION['rol']) : ?>
+                                <li><a class="text-gray-600 font-medium hover:text-green-700 transition-colors" href="user.php">Perfil</a></li>
                             <?php endif; ?>
                         <?php endif; ?>
                     </ul>
@@ -202,7 +202,7 @@ $APP_NAME = "AgroFuturoONG";
                             <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="admin.php">Admin</a></li>
                         <?php endif; ?>
                         <?php if ($_SESSION['rol'] == 'user') : ?>
-                            <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="perfil.php">Perfil</a></li>
+                            <li><a class="text-gray-600 hover:text-green-700 block px-4 py-2" href="user.php">Perfil</a></li>
                         <?php endif; ?>
                     <?php endif; ?>
                     <li class="pt-2">
@@ -255,8 +255,3 @@ $APP_NAME = "AgroFuturoONG";
             }
         });
     </script>
-
-
-</body>
-
-</html>
