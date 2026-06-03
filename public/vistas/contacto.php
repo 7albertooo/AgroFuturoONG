@@ -1,4 +1,8 @@
-<?php include_once 'header.php'; ?>
+<?php
+include_once 'header.php'; 
+
+$mensaje = $_GET['mensaje'] ?? '';
+?>
 
 <section class="w-full mx-auto p-4 md:p-10 flex flex-col items-center justify-center min-h-screen">
 
@@ -86,11 +90,21 @@
         </div>
 
         <div class="lg:col-span-3 lg:row-span-5 lg:col-start-3 lg:row-start-1 p-6 md:p-10 border border-gray-300 shadow-lg rounded-lg flex flex-col items-center justify-center hover:scale-[1.01] transition-transform bg-white">
-            <h2 class="text-2xl md:text-3xl font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-6 text-center">
+            
+         <?php if (!empty($mensaje)) :?>
+                <div class='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4' role='alert'>
+                    <span class='block sm:inline'><?= $mensaje ?></span>
+                </div>
+                <?php endif; ?>
+
+        <h2 class="text-2xl md:text-3xl font-semibold bg-gradient-to-l from-green-500 to-green-800 text-transparent bg-clip-text mb-6 text-center">
                 Contáctanos
             </h2>
 
-            <form action="enviar.php" method="POST" class="space-y-4 w-full max-w-md">
+            <form action="../../app/funciones/formContacto.php" method="POST" class="space-y-4 w-full max-w-md">
+
+               
+
                 <div>
                     <label class="block text-sm text-gray-600 mb-1">Nombre</label>
                     <input type="text" name="nombre" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-600 outline-none transition-all" placeholder="Tu nombre">

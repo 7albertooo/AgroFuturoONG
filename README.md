@@ -50,7 +50,7 @@ AgroFuturoONG/
 │   │   ├── loginControlador.php
 │   │   ├── logout.php
 │   │   └── registroControlador.php
-│   └── funciones/                # Funciones de negocio y helpers
+│   └── funciones/                # Funciones y helpers
 │       ├── adminF.php
 │       ├── checkout.php
 │       ├── datosAdmin.php
